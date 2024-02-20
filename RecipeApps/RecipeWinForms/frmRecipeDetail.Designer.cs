@@ -29,148 +29,165 @@
         private void InitializeComponent()
         {
             tblMain = new TableLayoutPanel();
-            lblRecipeName = new Label();
-            lblIngredients = new Label();
-            txtName = new TextBox();
-            lblDirections = new Label();
+            txtRecipeName = new TextBox();
             lblCalories = new Label();
-            txtCalories = new TextBox();
-            dtIng = new DataGridView();
-            dtDirections = new DataGridView();
+            txtCalorie = new TextBox();
+            lblCuisine = new Label();
+            lblUser = new Label();
+            lstCuisineType = new ComboBox();
+            lstUserName = new ComboBox();
+            btnSave = new Button();
+            btnDelete = new Button();
+            lblRecipeName = new Label();
             tblMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtIng).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dtDirections).BeginInit();
             SuspendLayout();
             // 
             // tblMain
             // 
-            tblMain.AutoSize = true;
+            tblMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tblMain.ColumnCount = 2;
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tblMain.Controls.Add(txtRecipeName, 1, 0);
+            tblMain.Controls.Add(lblCalories, 0, 1);
+            tblMain.Controls.Add(txtCalorie, 1, 1);
+            tblMain.Controls.Add(lblCuisine, 0, 2);
+            tblMain.Controls.Add(lblUser, 0, 3);
+            tblMain.Controls.Add(lstCuisineType, 1, 2);
+            tblMain.Controls.Add(lstUserName, 1, 3);
+            tblMain.Controls.Add(btnSave, 0, 4);
+            tblMain.Controls.Add(btnDelete, 1, 4);
             tblMain.Controls.Add(lblRecipeName, 0, 0);
-            tblMain.Controls.Add(lblIngredients, 0, 1);
-            tblMain.Controls.Add(txtName, 1, 0);
-            tblMain.Controls.Add(lblDirections, 0, 2);
-            tblMain.Controls.Add(lblCalories, 0, 3);
-            tblMain.Controls.Add(txtCalories, 1, 3);
-            tblMain.Controls.Add(dtIng, 1, 1);
-            tblMain.Controls.Add(dtDirections, 1, 2);
-            tblMain.Location = new Point(76, 12);
+            tblMain.Location = new Point(0, 0);
             tblMain.Name = "tblMain";
-            tblMain.RowCount = 4;
-            tblMain.RowStyles.Add(new RowStyle());
-            tblMain.RowStyles.Add(new RowStyle());
-            tblMain.RowStyles.Add(new RowStyle());
-            tblMain.RowStyles.Add(new RowStyle());
-            tblMain.Size = new Size(682, 426);
+            tblMain.RowCount = 5;
+            tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tblMain.Size = new Size(647, 437);
             tblMain.TabIndex = 0;
             // 
-            // lblRecipeName
+            // txtRecipeName
             // 
-            lblRecipeName.AutoSize = true;
-            lblRecipeName.Location = new Point(3, 0);
-            lblRecipeName.Name = "lblRecipeName";
-            lblRecipeName.Size = new Size(98, 20);
-            lblRecipeName.TabIndex = 0;
-            lblRecipeName.Text = "Recipe Name";
-            // 
-            // lblIngredients
-            // 
-            lblIngredients.AutoSize = true;
-            lblIngredients.Location = new Point(3, 33);
-            lblIngredients.Name = "lblIngredients";
-            lblIngredients.Size = new Size(83, 20);
-            lblIngredients.TabIndex = 1;
-            lblIngredients.Text = "Ingredients";
-            // 
-            // txtName
-            // 
-            txtName.Dock = DockStyle.Fill;
-            txtName.Location = new Point(344, 3);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(335, 27);
-            txtName.TabIndex = 2;
-            // 
-            // lblDirections
-            // 
-            lblDirections.AutoSize = true;
-            lblDirections.Location = new Point(3, 227);
-            lblDirections.Name = "lblDirections";
-            lblDirections.Size = new Size(76, 20);
-            lblDirections.TabIndex = 4;
-            lblDirections.Text = "Directions";
+            txtRecipeName.Dock = DockStyle.Fill;
+            txtRecipeName.Location = new Point(326, 3);
+            txtRecipeName.Name = "txtRecipeName";
+            txtRecipeName.Size = new Size(318, 27);
+            txtRecipeName.TabIndex = 2;
             // 
             // lblCalories
             // 
             lblCalories.AutoSize = true;
-            lblCalories.Location = new Point(3, 387);
+            lblCalories.Dock = DockStyle.Fill;
+            lblCalories.Location = new Point(3, 87);
             lblCalories.Name = "lblCalories";
-            lblCalories.Size = new Size(62, 20);
+            lblCalories.Size = new Size(317, 87);
             lblCalories.TabIndex = 5;
             lblCalories.Text = "Calories";
             // 
-            // txtCalories
+            // txtCalorie
             // 
-            txtCalories.Location = new Point(344, 390);
-            txtCalories.Name = "txtCalories";
-            txtCalories.Size = new Size(125, 27);
-            txtCalories.TabIndex = 7;
+            txtCalorie.Dock = DockStyle.Fill;
+            txtCalorie.Location = new Point(326, 90);
+            txtCalorie.Name = "txtCalorie";
+            txtCalorie.Size = new Size(318, 27);
+            txtCalorie.TabIndex = 7;
             // 
-            // dtIng
+            // lblCuisine
             // 
-            dtIng.AllowUserToAddRows = false;
-            dtIng.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtIng.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dtIng.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtIng.Dock = DockStyle.Fill;
-            dtIng.Location = new Point(344, 36);
-            dtIng.Name = "dtIng";
-            dtIng.RowHeadersWidth = 51;
-            dtIng.RowTemplate.Height = 29;
-            dtIng.Size = new Size(335, 188);
-            dtIng.TabIndex = 8;
+            lblCuisine.AutoSize = true;
+            lblCuisine.Dock = DockStyle.Fill;
+            lblCuisine.Location = new Point(3, 174);
+            lblCuisine.Name = "lblCuisine";
+            lblCuisine.Size = new Size(317, 87);
+            lblCuisine.TabIndex = 11;
+            lblCuisine.Text = "Cuisine";
             // 
-            // dtDirections
+            // lblUser
             // 
-            dtDirections.AllowUserToAddRows = false;
-            dtDirections.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtDirections.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dtDirections.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtDirections.Dock = DockStyle.Fill;
-            dtDirections.Location = new Point(344, 230);
-            dtDirections.Name = "dtDirections";
-            dtDirections.RowHeadersWidth = 51;
-            dtDirections.RowTemplate.Height = 29;
-            dtDirections.Size = new Size(335, 154);
-            dtDirections.TabIndex = 9;
+            lblUser.AutoSize = true;
+            lblUser.Dock = DockStyle.Fill;
+            lblUser.Location = new Point(3, 261);
+            lblUser.Name = "lblUser";
+            lblUser.Size = new Size(317, 87);
+            lblUser.TabIndex = 12;
+            lblUser.Text = "User";
+            // 
+            // lstCuisineType
+            // 
+            lstCuisineType.Dock = DockStyle.Fill;
+            lstCuisineType.FormattingEnabled = true;
+            lstCuisineType.Location = new Point(326, 177);
+            lstCuisineType.Name = "lstCuisineType";
+            lstCuisineType.Size = new Size(318, 28);
+            lstCuisineType.TabIndex = 13;
+            // 
+            // lstUserName
+            // 
+            lstUserName.Dock = DockStyle.Fill;
+            lstUserName.FormattingEnabled = true;
+            lstUserName.Location = new Point(326, 264);
+            lstUserName.Name = "lstUserName";
+            lstUserName.Size = new Size(318, 28);
+            lstUserName.TabIndex = 14;
+            // 
+            // btnSave
+            // 
+            btnSave.Dock = DockStyle.Fill;
+            btnSave.Location = new Point(3, 351);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(317, 83);
+            btnSave.TabIndex = 15;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Dock = DockStyle.Fill;
+            btnDelete.Location = new Point(326, 351);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(318, 83);
+            btnDelete.TabIndex = 16;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // lblRecipeName
+            // 
+            lblRecipeName.AutoSize = true;
+            lblRecipeName.Dock = DockStyle.Fill;
+            lblRecipeName.Location = new Point(3, 0);
+            lblRecipeName.Name = "lblRecipeName";
+            lblRecipeName.Size = new Size(317, 87);
+            lblRecipeName.TabIndex = 0;
+            lblRecipeName.Text = "Recipe Name";
             // 
             // frmRecipeDetail
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(647, 437);
             Controls.Add(tblMain);
             Name = "frmRecipeDetail";
             Text = "Recipe Details";
             tblMain.ResumeLayout(false);
             tblMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dtIng).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dtDirections).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private TableLayoutPanel tblMain;
-        private Label lblIngredients;
-        private TextBox txtName;
-        private Label lblDirections;
+        private TextBox txtRecipeName;
         private Label lblCalories;
         private Label lblRecipeName;
-        private DataGridView dtIng;
-        private TextBox txtCalories;
-        private DataGridView dtDirections;
+        private TextBox txtCalorie;
+        private Label lblCuisine;
+        private Label lblUser;
+        private ComboBox lstCuisineType;
+        private ComboBox lstUserName;
+        private Button btnSave;
+        private Button btnDelete;
     }
 }
