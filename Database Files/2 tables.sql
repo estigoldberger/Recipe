@@ -140,7 +140,7 @@ CookBookName varchar(40) not null
     constraint u_cookbookName_must_be_unique unique,
 Price decimal (4, 2) not null constraint ck_price_greater_than_0 check (Price > 0),
 -- SM Don't allow future dates.
-DateCreated datetime not null default GETDATE () constraint ck_dateCreated_cannot_be_futureDate check (Datecreated <=GETDATE()),
+DateCreated datetime not null default GETDATE () constraint ck_dateCBCreated_cannot_be_futureDate check (Datecreated <=GETDATE()),
 CookBookStatus bit not null default 1, 
 PictureCode as CONCAT('Cookbook_',REPLACE(Cookbookname, ' ', '_' ), '.jpg' )PERSISTED,
 )
@@ -150,7 +150,7 @@ CookookRecipeID int not null identity primary key,
 RecipeID int not null constraint fk_Recipe_CookbookRecipe foreign key references Recipe (RecipeID),
 CookbookID int not null constraint fk_CookBook_CookbookRecipe foreign key references CookBook (CookBookID),
 -- SM Ad constraint that it must be > 0.
-RecipeSequence int not null constraint ck_recipeSequence_greater_than_0 check (RecipeSequence > 0), 
+RecipeSequence int not null constraint ck_CBrecipeSequence_greater_than_0 check (RecipeSequence > 0), 
 constraint u_recipesequence_must_be_unique unique (cookbookID, recipeSequence),
 constraint u_recipeID_CookbookID_must_be_unique unique (recipeId, cookbookid)
 )
