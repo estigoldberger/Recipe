@@ -365,5 +365,5 @@ where s.LastName = 'lowenthal'
 group by  c.CuisineType, s.UserName
 
 
-select * from Recipe r 
+
 

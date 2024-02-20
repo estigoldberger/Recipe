@@ -59,10 +59,10 @@ RecipeName varchar(40) not null
     constraint u_recipeName_must_be_unique unique
     constraint ck_RecipeName_is_not_blank check (RecipeName <> ''), 
 Calorie int not null constraint ck_calorie_greater_than_0 check (Calorie > 0),
-DateDrafted datetime not null default GETDATE() constraint ck_RecipeDateDrafted_cannot_be_futureDate check (DateDrafted <=GETDATE()), 
+DateDrafted datetime not null default GETDATE() constraint ck_dateDrafted_cannot_be_futureDate check (DateDrafted <=GETDATE()), 
 -- SM DatePublished and DateArchived should "NOT" be defaulted to current date.
-DatePublished datetime null  constraint ck_RecipeDatepublished_cannot_be_futureDate check (Datepublished <=GETDATE()),
-DateArchived datetime null  constraint ck_recipedatearchived_cannot_be_futureDate check (Datearchived <=GETDATE()),
+DatePublished datetime null  constraint ck_datepublished_cannot_be_futureDate check (Datepublished <=GETDATE()),
+DateArchived datetime null  constraint ck_datearchived_cannot_be_futureDate check (Datearchived <=GETDATE()),
 RecipeStatus  as case when DatePublished is null and DateArchived is null  then 'Drafted'
     when DateArchived is null and DatePublished is not null then 'Published'
     else 'Archived'
@@ -79,7 +79,7 @@ RecipeIngredientID int not null identity primary key,
 RecipeID int not null constraint f_Recipe_recipeingredient foreign key references Recipe (RecipeID),
 IngredientID int not null constraint f_ingredient_recipeIngredient foreign key references Ingredient (IngredientID),
 MeasurementID int  null constraint f_measurement_RecipeIngredient FOREIGN key REFERENCES Measurement (measurementID),
-RecipeSequence int not null constraint ck_RIrecipeSequence_greater_than_0 check (RecipeSequence > 0) ,
+RecipeSequence int not null constraint ck_recipeSequence_greater_than_0 check (RecipeSequence > 0) ,
 -- SM Don't allow null.
 Amount decimal (4,2) not null constraint ck_Amount_greater_than_0 check (Amount > 0), 
 -- SM Use FK in constraint. You're using PK.
@@ -140,7 +140,7 @@ CookBookName varchar(40) not null
     constraint u_cookbookName_must_be_unique unique,
 Price decimal (4, 2) not null constraint ck_price_greater_than_0 check (Price > 0),
 -- SM Don't allow future dates.
-DateCreated datetime not null default GETDATE () constraint ck_Cookbook_dateCreated_cannot_be_futureDate check (Datecreated <=GETDATE()),
+DateCreated datetime not null default GETDATE () constraint ck_dateCreated_cannot_be_futureDate check (Datecreated <=GETDATE()),
 CookBookStatus bit not null default 1, 
 PictureCode as CONCAT('Cookbook_',REPLACE(Cookbookname, ' ', '_' ), '.jpg' )PERSISTED,
 )
@@ -150,7 +150,7 @@ CookookRecipeID int not null identity primary key,
 RecipeID int not null constraint fk_Recipe_CookbookRecipe foreign key references Recipe (RecipeID),
 CookbookID int not null constraint fk_CookBook_CookbookRecipe foreign key references CookBook (CookBookID),
 -- SM Ad constraint that it must be > 0.
-RecipeSequence int not null constraint ck_CookbookRecipeSequence_greater_than_0 check (RecipeSequence > 0), 
+RecipeSequence int not null constraint ck_recipeSequence_greater_than_0 check (RecipeSequence > 0), 
 constraint u_recipesequence_must_be_unique unique (cookbookID, recipeSequence),
 constraint u_recipeID_CookbookID_must_be_unique unique (recipeId, cookbookid)
 )
