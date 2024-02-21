@@ -25,7 +25,7 @@ namespace RecipeWinForms
 
             DataTable dtCuisine = SQLUtility.GetDataTable("select CuisineID, CuisineType from Cuisine");
             DataTable dtUsers = SQLUtility.GetDataTable("select StaffId, UserName from Staff");
-            string sql = "select StaffId, CuisineId, RecipeId, recipeName, Calorie from recipe r  where r.recipeId=" + recipeid.ToString();
+            string sql = "select StaffId, CuisineId, RecipeId, recipeName, Calorie, DateDrafted, dateArchived, DatePublished from recipe r  where r.recipeId=" + recipeid.ToString();
             dtRecipe = SQLUtility.GetDataTable(sql);
             if (recipeid == 0)
             {
@@ -33,6 +33,9 @@ namespace RecipeWinForms
             }
             WindowsFormsUtility.SetControlBindings(txtRecipeName, dtRecipe);
             WindowsFormsUtility.SetControlBindings(txtCalorie, dtRecipe);
+            WindowsFormsUtility.SetControlBindings(dtpDateDrafted, dtRecipe);
+            WindowsFormsUtility.SetControlBindings(txtDatePublished, dtRecipe);
+            WindowsFormsUtility.SetControlBindings(txtDateArchived, dtRecipe);
             WindowsFormsUtility.SetListBinding(lstCuisineType, dtCuisine, dtRecipe, "Cuisine");
             WindowsFormsUtility.SetListBinding(lstUserName, dtUsers, dtRecipe, "Staff");
             //GetIngredientList(recipeid);
@@ -70,14 +73,17 @@ namespace RecipeWinForms
            $" RecipeName= '{r["RecipeName"]}',",
            $"StaffId= '{r["StaffId"]}',",
            $"CuisineId= '{r["CuisineId"]}',",
-           $" Calorie= '{r["Calorie"]}'",
+           $" Calorie= '{r["Calorie"]}',",
+           $"DateDrafted= '{r["DateDrafted"]}',",
+           $"DatePublished= '{r["DatePublished"]}',",
+           $"DateArchived= '{r["DateArchived"]}'",
            $"where RecipeId = {r["RecipeId"]}");
             }
             else
             {
 
-                sql = "insert Recipe(RecipeName, Calorie, StaffId, CuisineId)";
-                sql += $"select '{r["RecipeName"]}', {r["Calorie"]}, '{r["StaffId"]}', '{r["CuisineId"]}'";
+                sql = "insert Recipe(RecipeName, Calorie, StaffId, CuisineId, DateDrafted, DatePublished, dateArchived)";
+                sql += $"select '{r["RecipeName"]}', {r["Calorie"]}, '{r["StaffId"]}', '{r["CuisineId"]}', '{r["DateDrafted"]}', '{r["DatePublished"]}', '{r["DateArchived"]}' ";
             }
             SQLUtility.ExecuteSQL(sql);
             this.Close();

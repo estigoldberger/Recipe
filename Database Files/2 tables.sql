@@ -69,9 +69,9 @@ RecipeStatus  as case when DatePublished is null and DateArchived is null  then 
     end 
      persisted,
 pictureCode as CONCAT('Recipe_',REPLACE(recipename, ' ', '_' ), '.jpg' )persisted,
-constraint ck_datePublished_must_be_after_dateDrafted check (DatePublished > DateDrafted),
+constraint ck_datePublished_must_be_after_dateDrafted check (DatePublished > DateDrafted ),
 -- SM No need to check for null it gets ignored by constraint. Use and for both checks.
-constraint ck_date_archived_is_after_date_drafted_or_published check ( DateArchived > DateDrafted or DateArchived > DatePublished)
+constraint ck_date_archived_is_after_date_drafted_or_published check ( DateArchived > DateDrafted or DateArchived > DatePublished  )
 )
 
 create table dbo.RecipeIngredient(
