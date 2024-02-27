@@ -54,7 +54,7 @@ namespace RecipeTest
             dt.Rows[0]["DatePublished"] = DatePublished;
             Recipes.Save(dt); ;
             DateTime newDatePublished = Recipes.DatePublished("select datepublished from recipe where recipeid= " + recipeid);
-            Assert.IsTrue(newDatePublished == DatePublished, "DatePublished for president (" + recipeid + ") = " + newDatePublished);
+            Assert.IsTrue(newDatePublished == DatePublished, "DatePublished for recipe (" + recipeid + ") = " + newDatePublished);
             TestContext.WriteLine("DatePublished for recipe (" + recipeid + ") = " + newDatePublished);
         }
         [Test]
