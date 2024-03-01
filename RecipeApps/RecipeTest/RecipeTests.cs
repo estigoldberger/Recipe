@@ -46,14 +46,14 @@ namespace RecipeTest
         {
             int recipeid = GetExistingRecipeId();
             Assume.That(recipeid > 0, "No recipes exist in DB, can't run test");
-            DateTime DatePublished = Recipes.DatePublished("select datepublished from recipe where recipeid= " + recipeid);
+            DateTime DatePublished = GetDate("select datepublished from recipe where recipeid = " + recipeid);
             TestContext.WriteLine("DatePublished for recipeid " + recipeid + " is " + DatePublished);
             DatePublished = DatePublished.AddDays(1);
             TestContext.WriteLine("change DatePublished to " + DatePublished);
             DataTable dt = Recipes.RecipeDetails(recipeid);
             dt.Rows[0]["DatePublished"] = DatePublished;
             Recipes.Save(dt); ;
-            DateTime newDatePublished = Recipes.DatePublished("select datepublished from recipe where recipeid= " + recipeid);
+            DateTime newDatePublished = GetDate("select datepublished from recipe where recipeid= " + recipeid);
             Assert.IsTrue(newDatePublished == DatePublished, "DatePublished for recipe (" + recipeid + ") = " + newDatePublished);
             TestContext.WriteLine("DatePublished for recipe (" + recipeid + ") = " + newDatePublished);
         }
@@ -116,6 +116,20 @@ namespace RecipeTest
         {
             return SQLUtility.GetFirstColumnFirstRowValue("select top 1 recipeid from recipe");
 
+        }
+        private DateTime GetDate(string sql)
+        {
+            DateTime d = new DateTime();
+            DataTable dt = SQLUtility.GetDataTable(sql);
+            if (dt.Rows.Count > 0 && dt.Columns.Count > 0)
+            {
+                if (dt.Rows[0][0] != DBNull.Value)
+                {
+
+                    DateTime.TryParse(dt.Rows[0][0].ToString(), out d);
+                }
+            }
+            return d;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,46 +13,47 @@ namespace RecipeSystem
     {
         public static DataTable GetRecipeList(string recipename)
         {
-            string sql = "Select r.recipeID, r.RecipeName, r.Calorie from recipe r where r.recipename like '%" + recipename + "%'";
-            
-            return SQLUtility.GetDataTable(sql);
+            DataTable dt = new DataTable();
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeGet");
+            cmd.Parameters["@RecipeName"].Value = recipename;
+            dt = SQLUtility.GetDataTable(cmd);
+            return dt;
         }
+        
         public static DataTable RecipeDetails(int recipeid)
         {
-            string sql = "select StaffId, CuisineId, RecipeId, recipeName, Calorie, DateDrafted, dateArchived, DatePublished from recipe r  where r.recipeId=" + recipeid.ToString();
-           return SQLUtility.GetDataTable(sql);
+            DataTable dt = new DataTable();
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeGet");
+            cmd.Parameters["@Recipeid"].Value = recipeid;
+            dt = SQLUtility.GetDataTable(cmd);
+            return dt;
         }
         public static DataTable UserDetails()
         {
-            return SQLUtility.GetDataTable("select StaffId, UserName from Staff");
+            DataTable dt = new DataTable();
+            SqlCommand cmd = SQLUtility.GetSqlCommand("UserGet");
+            cmd.Parameters["@All"].Value = 1;
+            dt = SQLUtility.GetDataTable(cmd);
+            return dt;
 
         }
         public static DataTable CuisineDetails()
         {
-            return SQLUtility.GetDataTable("select CuisineID, CuisineType from Cuisine");
+            DataTable dt = new DataTable();
+            SqlCommand cmd = SQLUtility.GetSqlCommand("CuisineGet");
+            cmd.Parameters["@All"].Value = 1;
+            dt = SQLUtility.GetDataTable(cmd);
+            return dt;
 
         }
-        public static DateTime DatePublished(string sql)
-        {
-            DateTime d = new DateTime();
-            DataTable dt = SQLUtility.GetDataTable(sql);
-            if (dt.Rows.Count > 0 && dt.Columns.Count > 0)
-            {
-                if (dt.Rows[0][0] != DBNull.Value)
-                {
-
-                    DateTime.TryParse(dt.Rows[0][0].ToString(), out d);
-                }
-            }
-            return d;
-        }
-       public static int CountofRecipes(string recipename)
-        {
-            int n = 0;
-            DataTable dt = SQLUtility.GetDataTable("select count(*) from recipe where recipename= " + recipename);
-            int.TryParse(dt.DisplayExpression, out n);
-            return n;
-        }
+        
+       //public static int CountofRecipes(string recipename)
+       // {
+       //     int n = 0;
+       //     DataTable dt = SQLUtility.GetDataTable("select count(*) from recipe where recipename= " + recipename);
+       //     int.TryParse(dt.DisplayExpression, out n);
+       //     return n;
+       // }
         public static void Save(DataTable dtRecipe)
         {
             DataRow r = dtRecipe.Rows[0];

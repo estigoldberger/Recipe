@@ -19,7 +19,7 @@
         {
             dtRecipe = Recipes.RecipeDetails(recipeid);
             DataTable dtCuisine = Recipes.CuisineDetails();
-            DataTable dtUsers = Recipes.UserDetails();            
+            DataTable dtUsers = Recipes.UserDetails();
             if (recipeid == 0)
             {
                 dtRecipe.Rows.Add();
