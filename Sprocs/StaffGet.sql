@@ -1,4 +1,4 @@
-create or alter procedure dbo.UserGet(
+create or alter procedure dbo.StaffGet(
 	@Userid int =0, 
 	@UserName varchar(20)= '', 
 	@All bit =0)
@@ -13,15 +13,15 @@ begin
 end
 go 
 /*
-exec UserGet
+exec StaffGet
 
-exec UserGet @All=1
+exec StaffGet @All=1
 
-exec UserGet @UserName = ''
+exec StaffGet @UserName = ''
 
-exec UserGet @UserName = 'l'
+exec StaffGet @UserName = 'l'
 
 declare @userid int
 select top 1 @userid= StaffID from Staff
-exec UserGet @Userid= @userid
+exec StaffGet @Userid= @userid
 */

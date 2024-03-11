@@ -6,7 +6,7 @@ create or alter procedure dbo.RecipeGet(
 as
 begin
 	select  @RecipeName = nullif(@recipeName, '')
-	select r.RecipeId, r.RecipeName, r.Calorie, r.RecipeStatus, r.cuisineId, r.StaffID, r.DateDrafted, r.DatePublished, r.DateArchived
+	select r.RecipeId, r.RecipeName, r.Calorie, r.RecipeStatus, r.CuisineId, r.StaffID, r.DateDrafted, r.DatePublished, r.DateArchived
 	from recipe r
 	where r.RecipeId= @Recipeid
 	or r.RecipeName like '%' + @RecipeName + '%'

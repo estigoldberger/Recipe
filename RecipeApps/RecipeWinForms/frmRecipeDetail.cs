@@ -55,14 +55,42 @@
         //}
         private void Save()
         {
+            Application.UseWaitCursor = true;
+            try
+            {
 
-            Recipes.Save(dtRecipe);
-            this.Close();
+                Recipes.Save(dtRecipe);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+
+
+                MessageBox.Show(ex.Message, "Recipe");
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
+            
         }
         private void Delete()
         {
-            Recipes.Delete(dtRecipe);
-            this.Close();
+            Application.UseWaitCursor = true;
+            try
+            {
+                Recipes.Delete(dtRecipe);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Recipe");
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
+            
         }
         private void BtnDelete_Click(object? sender, EventArgs e)
         {

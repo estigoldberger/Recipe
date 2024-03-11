@@ -57,7 +57,7 @@ StaffID int not null constraint f_staff_recipe foreign key references Staff (Sta
 CuisineID int not null constraint f_cuisine_recipe foreign key references Cuisine (cuisineID),
 RecipeName varchar(40) not null 
     constraint u_recipeName_must_be_unique unique
-    constraint ck_RecipeName_is_not_blank check (RecipeName <> ''), 
+    constraint ck_RecipeName_cannot_be_blank check (RecipeName <> ''), 
 Calorie int not null constraint ck_calorie_greater_than_0 check (Calorie > 0),
 DateDrafted datetime not null default GETDATE() constraint ck_RecipeDateDrafted_cannot_be_futureDate check (DateDrafted <=GETDATE()), 
 -- SM DatePublished and DateArchived should "NOT" be defaulted to current date.
@@ -117,15 +117,15 @@ pictureCode as CONCAT('Meal_',REPLACE(Mealname, ' ', '_' ), '.jpg' ) persisted
 
 create table dbo.MealCourse (
 MealCourseID int not null identity primary key,
-mealID int not null constraint fk_meal_MealCourse foreign key references Meal (MealID),
-courseID int not null constraint fk_course_meal_course foreign key references Course (courseID),
+mealID int not null constraint f_meal_MealCourse foreign key references Meal (MealID),
+courseID int not null constraint f_course_meal_course foreign key references Course (courseID),
 constraint u_Mealid_courseID_must_be_unique unique (MealId, CourseId)
 )
 
 create table dbo.RecipeMealCourse (
 RecipeMealCourseId int not null identity primary key,
-RecipeID int not null constraint fk_Recipe_RecipeMealCourse foreign key references Recipe (RecipeID),
-MealCourseId int not null constraint fk_MealCourse_RecipeMealCourse foreign key references MealCourse (MealCourseID),
+RecipeID int not null constraint f_Recipe_RecipeMealCourse foreign key references Recipe (RecipeID),
+MealCourseId int not null constraint f_MealCourse_RecipeMealCourse foreign key references MealCourse (MealCourseID),
 IsMain bit not null ,
 constraint u_RecipeId_MealCourseID_must_be_unique unique (RecipeId, MealCourseID)
 )
@@ -147,8 +147,8 @@ PictureCode as CONCAT('Cookbook_',REPLACE(Cookbookname, ' ', '_' ), '.jpg' )PERS
 
 create table dbo.CookbookRecipe(
 CookookRecipeID int not null identity primary key,
-RecipeID int not null constraint fk_Recipe_CookbookRecipe foreign key references Recipe (RecipeID),
-CookbookID int not null constraint fk_CookBook_CookbookRecipe foreign key references CookBook (CookBookID),
+RecipeID int not null constraint f_Recipe_CookbookRecipe foreign key references Recipe (RecipeID),
+CookbookID int not null constraint f_CookBook_CookbookRecipe foreign key references CookBook (CookBookID),
 -- SM Ad constraint that it must be > 0.
 RecipeSequence int not null constraint ck_CookbookRecipeSequence_greater_than_0 check (RecipeSequence > 0), 
 constraint u_recipesequence_must_be_unique unique (cookbookID, recipeSequence),
