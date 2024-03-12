@@ -32,7 +32,7 @@ namespace RecipeSystem
         public static DataTable UserDetails()
         {
             DataTable dt = new DataTable();
-            SqlCommand cmd = SQLUtility.GetSqlCommand("UserGet");
+            SqlCommand cmd = SQLUtility.GetSqlCommand("StaffGet");
             SQLUtility.SetParameterValue(cmd, "@All", 1);
 
             dt = SQLUtility.GetDataTable(cmd);
