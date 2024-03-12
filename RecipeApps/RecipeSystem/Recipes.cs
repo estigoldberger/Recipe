@@ -15,7 +15,7 @@ namespace RecipeSystem
         {
             DataTable dt = new DataTable();
             SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeGet");
-            cmd.Parameters["@RecipeName"].Value = recipename;
+            SQLUtility.SetParameterValue(cmd, "@RecipeName", recipename);
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
         }
@@ -24,7 +24,8 @@ namespace RecipeSystem
         {
             DataTable dt = new DataTable();
             SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeGet");
-            cmd.Parameters["@Recipeid"].Value = recipeid;
+            SQLUtility.SetParameterValue(cmd, "@Recipeid", recipeid);
+
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
         }
@@ -32,7 +33,8 @@ namespace RecipeSystem
         {
             DataTable dt = new DataTable();
             SqlCommand cmd = SQLUtility.GetSqlCommand("UserGet");
-            cmd.Parameters["@All"].Value = 1;
+            SQLUtility.SetParameterValue(cmd, "@All", 1);
+
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
 
@@ -41,7 +43,7 @@ namespace RecipeSystem
         {
             DataTable dt = new DataTable();
             SqlCommand cmd = SQLUtility.GetSqlCommand("CuisineGet");
-            cmd.Parameters["@All"].Value = 1;
+            SQLUtility.SetParameterValue(cmd, "@All", 1);
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
 
@@ -84,8 +86,9 @@ namespace RecipeSystem
         public static void Delete(DataTable dtRecipe)
         {
             int id = (int)dtRecipe.Rows[0]["RecipeId"];
-            string sql = "Delete recipe where recipeId =" + id;
-            SQLUtility.ExecuteSQL(sql);
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeDelete");
+            SQLUtility.SetParameterValue(cmd, "@RecipeId", id);
+            SQLUtility.ExecuteSQL(cmd);
         }
     }
 }

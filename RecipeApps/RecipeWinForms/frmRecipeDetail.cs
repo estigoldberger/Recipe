@@ -72,10 +72,15 @@
             {
                 Application.UseWaitCursor = false;
             }
-            
+
         }
         private void Delete()
         {
+            var response = MessageBox.Show("Are you sure you want to delete this recipe?", "Recipe", MessageBoxButtons.YesNo);
+            if (response == DialogResult.No)
+            {
+                return;
+            }
             Application.UseWaitCursor = true;
             try
             {
@@ -90,7 +95,7 @@
             {
                 Application.UseWaitCursor = false;
             }
-            
+
         }
         private void BtnDelete_Click(object? sender, EventArgs e)
         {
