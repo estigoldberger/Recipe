@@ -21,7 +21,7 @@ on s.lastName = x.lastname
 join cuisine c 
 on c.cuisinetype = x.cuisineType
 
-/*;with x as (
+;with x as (
     select RecipName = 'peanut chews', IngredientName= 'sugar', MeasurementType='cups', RecipeSequence= 1, Amount = 1
     union select 'peanut chews', 'corn syrup', 'tbsp', 2, 2
     union select 'peanut chews', 'rice krispies', 'cups', 3, 5
@@ -60,4 +60,4 @@ INSERT RecipeDirection (RecipeID, Direction, DirectionSequence)
 select r.RecipeId, x.Direction, x.DirectionSequence
 from x
 join Recipe r
-on x.RecipeName = r.RecipeName*/
+on x.RecipeName = r.RecipeName
