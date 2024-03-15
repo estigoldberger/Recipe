@@ -3,6 +3,7 @@
     public partial class frmRecipeDetail : Form
     {
         DataTable dtRecipe;
+        BindingSource bindsource = new BindingSource();
         public frmRecipeDetail()
         {
             InitializeComponent();
@@ -18,17 +19,18 @@
         public void ShowRecipeDetails(int recipeid)
         {
             dtRecipe = Recipes.RecipeDetails(recipeid);
+            bindsource.DataSource = dtRecipe;
             DataTable dtCuisine = Recipes.CuisineDetails();
             DataTable dtUsers = Recipes.UserDetails();
             if (recipeid == 0)
             {
                 dtRecipe.Rows.Add();
             }
-            WindowsFormsUtility.SetControlBindings(txtRecipeName, dtRecipe);
-            WindowsFormsUtility.SetControlBindings(txtCalorie, dtRecipe);
-            WindowsFormsUtility.SetControlBindings(dtpDateDrafted, dtRecipe);
-            WindowsFormsUtility.SetControlBindings(txtDatePublished, dtRecipe);
-            WindowsFormsUtility.SetControlBindings(txtDateArchived, dtRecipe);
+            WindowsFormsUtility.SetControlBindings(txtRecipeName, bindsource);
+            WindowsFormsUtility.SetControlBindings(txtCalorie, bindsource);
+            WindowsFormsUtility.SetControlBindings(dtpDateDrafted, bindsource);
+            WindowsFormsUtility.SetControlBindings(txtDatePublished, bindsource);
+            WindowsFormsUtility.SetControlBindings(txtDateArchived, bindsource);
             WindowsFormsUtility.SetListBinding(lstCuisineType, dtCuisine, dtRecipe, "Cuisine");
             WindowsFormsUtility.SetListBinding(lstUserName, dtUsers, dtRecipe, "Staff");
             //GetIngredientList(recipeid);
@@ -60,6 +62,7 @@
             {
 
                 Recipes.Save(dtRecipe);
+                bindsource.ResetBindings(false);
                 this.Close();
             }
             catch (Exception ex)
