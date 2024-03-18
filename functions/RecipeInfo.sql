@@ -21,5 +21,6 @@ end
 go 
 
 /*select dbo.RecipeInfo(r.RecipeId)
-from recipe r*/
+from recipe r
+*/
 

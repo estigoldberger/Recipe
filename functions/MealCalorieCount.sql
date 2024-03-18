@@ -17,3 +17,6 @@ begin
     return @value
 end
 go 
+/*select dbo.MealCalorieCount(m.mealid)
+from meal m 
+where m.mealname= 'breakfast bash'*/
