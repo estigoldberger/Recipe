@@ -5,13 +5,15 @@ create or alter procedure dbo.RecipeGet(
 	)
 as
 begin
-	select  @RecipeName = nullif(@recipeName, '')
-	select r.RecipeId, r.RecipeName, r.Calorie, r.RecipeStatus, r.CuisineId, r.StaffID, r.DateDrafted, r.DatePublished, r.DateArchived, RecipeInfo= dbo.RecipeInfo(r.RecipeId)
+	select   @Recipeid= isnull(@RecipeId, 0)
+	select r.RecipeId, r.RecipeName, r.Calorie, r.RecipeStatus, r.CuisineId, r.StaffID, r.DateDrafted, r.DatePublished, r.DateArchived, RecipeInfo= dbo.RecipeInfo(r.RecipeId), Sequence=1
 	from recipe r
 	where r.RecipeId= @Recipeid
-	or r.RecipeName like '%' + @RecipeName + '%'
 	or @All=1
-	order by r.RecipeName
+	union select ' ', 'Add Recipe Here',  ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ', 2
+	order by r.RecipeName, Sequence
+
+	
 end
 go 
 /*

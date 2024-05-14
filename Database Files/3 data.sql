@@ -43,7 +43,7 @@ union select 'vanilla pudding'
 union select 'whipped cream cheese'
 union select 'sour cream'
 union select 'baking powder'
-union select 'cinnammon'
+union select 'Cinnamon'
 union select 'chicken cutlets'
 union select 'ketchup'
 union select 'dark brown sugar'
@@ -116,7 +116,7 @@ join cuisine c
 on c.cuisinetype = x.cuisineType
 
 ;with x as (
-    select RecipName = 'chocolate Chip cookies', IngredientName= 'sugar', MeasurementType='cups', RecipeSequence= 1, Amount = 1
+    select RecipeName = 'chocolate Chip cookies', IngredientName= 'sugar', MeasurementType='cups', RecipeSequence= 1, Amount = 1
     union select 'chocolate chip cookies', 'oil', 'cup', 2, .5
     union select 'chocolate chip cookies', 'eggs', '', 3, 3
     union select 'chocolate chip cookies', 'flour', 'cups', 4, 2
@@ -176,7 +176,7 @@ insert RecipeIngredient (RecipeID, IngredientID, MeasurementID, RecipeSequence, 
 select r.RecipeId, i.IngredientID, m.MeasurementID, x.RecipeSequence, x.Amount
 from x 
 join recipe r 
-on x.RecipName=r.RecipeName
+on x.RecipeName=r.RecipeName
 join Ingredient i 
 on x.IngredientName=i.IngredientName
 left join Measurement m 
@@ -218,7 +218,7 @@ on m.MeasurementType = x.MeasurementType
     union select 'rice dish', 'cube squash', 2
     union select 'rice dish', 'pour the rice, squash, and carrots into pot and cook for 35 minutes', 3
     union select 'chocolate croissant', 'roll out flaky dough until 3/4 thick', 1
-    union select 'chocolate croissant', 'mix cocoa, cinammon, and vanilla sugar', 2
+    union select 'chocolate croissant', 'mix cocoa, cinnamon, and vanilla sugar', 2
     union select 'chocolate croissant', 'spread oil over the rolled out dough and put chocolate mixture on top', 3
     union select 'chocolate croissant', 'cut each dough into 4 squares', 4
     union select 'chocolate croissant', 'twist each square into croissant shape and place on cookie sheet', 5

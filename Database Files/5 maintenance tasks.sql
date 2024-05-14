@@ -103,14 +103,11 @@ where s.LastName = 'metzger'
 	where r.RecipeName = 'chocolate chip cookies'
 )
 insert Recipe(RecipeName, Calorie, staffId, cuisineid, DateDrafted, DatePublished, DateArchived)
-select concat(r.RecipeName, '-clone'), r.Calorie,  s.StaffID, c.CuisineID, GETDATE(), null, null
+select concat(r.RecipeName, '-clone'), r.Calorie,  r.StaffID, r.CuisineID, GETDATE(), null, null
 from x
 join recipe r 
 on x.RecipeName = r.RecipeName 
-join staff s 
-on s.StaffID = r.StaffID 
-join Cuisine c 
-on c.CuisineID=r.CuisineID
+
 
 
 ;with x as 
@@ -264,7 +261,7 @@ join recipe r
 on r.RecipeId = x.RecipeId
 join staff s 
 on s.StaffID = r.StaffID
-group by s.LastName, s.FirstName
+group by s.LastName, s.FirstName, r.RecipeName, r.DateDrafted, r.DatePublished, r.RecipeStatus, x.averagedaysuntilpublished
 
 
 /*

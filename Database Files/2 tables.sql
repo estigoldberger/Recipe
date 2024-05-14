@@ -63,15 +63,20 @@ DateDrafted datetime not null default GETDATE() constraint ck_RecipeDateDrafted_
 -- SM DatePublished and DateArchived should "NOT" be defaulted to current date.
 DatePublished datetime null  constraint ck_RecipeDatepublished_cannot_be_futureDate check (Datepublished <=GETDATE()),
 DateArchived datetime null  constraint ck_recipedatearchived_cannot_be_futureDate check (Datearchived <=GETDATE()),
-RecipeStatus  as case when DatePublished is null and DateArchived is null  then 'Drafted'
+RecipeStatus  as case 
+when DatePublished is null and DateArchived is null  then 'Drafted'
     when DateArchived is null and DatePublished is not null then 'Published'
+	when DateDrafted > DateArchived and DatePublished is null then 'Drafted'
+	when DateDrafted > DatePublished and DateDrafted > DateArchived   then 'Drafted'
+	when DateArchived > DatePublished and DateArchived > DateDrafted and DateArchived is not null then 'Archived'
+	when DatePublished > DateDrafted and DatePublished > DateArchived  and DatePublished is not null then 'Published'
     else 'Archived'
     end 
      persisted,
 pictureCode as CONCAT('Recipe_',REPLACE(recipename, ' ', '_' ), '.jpg' )persisted,
-constraint ck_datePublished_must_be_after_dateDrafted check (DatePublished > DateDrafted ),
+constraint ck_datePublished_must_be_after_dateDrafted check (DatePublished >= DateDrafted ),
 -- SM No need to check for null it gets ignored by constraint. Use and for both checks.
---constraint ck_date_archived_is_after_date_drafted_or_published check ( DateArchived > DateDrafted or DateArchived > DatePublished  )
+constraint ck_date_archived_is_after_date_drafted_or_published check ( DateArchived >= DateDrafted or DateArchived >= DatePublished  )
 )
 
 create table dbo.RecipeIngredient(
@@ -146,7 +151,7 @@ PictureCode as CONCAT('Cookbook_',REPLACE(Cookbookname, ' ', '_' ), '.jpg' )PERS
 )
 
 create table dbo.CookbookRecipe(
-CookookRecipeID int not null identity primary key,
+CookbookRecipeID int not null identity primary key,
 RecipeID int not null constraint f_Recipe_CookbookRecipe foreign key references Recipe (RecipeID),
 CookbookID int not null constraint f_CookBook_CookbookRecipe foreign key references CookBook (CookBookID),
 -- SM Ad constraint that it must be > 0.

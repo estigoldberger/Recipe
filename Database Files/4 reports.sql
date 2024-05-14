@@ -45,7 +45,7 @@ order by r.RecipeStatus DESC
         c) List of prep steps sorted by sequence.
 */
 
-select r.RecipeName, r.Calorie, NumOfIngredients = count(distinct ri.recipesequence), NumOfSteps= count (distinct rd.DirectionSequence), r.pictureCode
+select r.RecipeName, r.Calorie, NumOfIngredients = count(distinct ri.recipesequence), NumOfSteps= count ( distinct rd.DirectionSequence), r.pictureCode
 from Recipe r 
 join RecipeIngredient ri
 on r.RecipeId = ri.RecipeID
