@@ -7,7 +7,7 @@ as
 begin
 
 	select @StaffID = isnull(@StaffId,0)
-
+--LB: All code should be inside a transaction.
 	delete  cr 
 from CookbookRecipe cr 
 join CookBook c 
@@ -53,6 +53,7 @@ join staff s
 on s.StaffID = m.StaffID
 where s.StaffID=@StaffId
 
+--LB: No need to join the staff table, the where clause can be based on the staff id in the recipe table. please fix all statement below.
 delete rd
 from RecipeDirection rd 
 join recipe r 
@@ -76,7 +77,6 @@ on s.StaffID=r.staffId
 join RecipeMealCourse rmc 
 on r.RecipeId = rmc.RecipeID
 where s.StaffID=@StaffId
-
 
 delete cr  
 from staff s 

@@ -7,7 +7,7 @@ begin
 	declare @return int = 0
 
 	select @CookbookRecipeId = isnull(@CookbookRecipeId,0)
-
+--LB: Please fix column typo. 
 	delete CookbookRecipe where CookookRecipeId= @CookbookRecipeId
 
 	return @return

@@ -6,6 +6,7 @@ as
 begin
 delete ri
 from RecipeIngredient ri 
+--LB: Unnecessary to join to ingredient table.
 join ingredient i 
 on i.ingredientid= ri.ingredientid
 where i.IngredientID= @IngredientId

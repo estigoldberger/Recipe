@@ -1,6 +1,6 @@
 create or alter proc dbo.CloneRecipe(
 	@RecipeId int= null output,
-
+--LB:Line break should be removed.
 	@BaseRecipeId int=0,
 	@Message varchar(500)='' output
 )

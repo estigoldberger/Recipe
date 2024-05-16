@@ -1,3 +1,4 @@
+--LB: Sproc is nicely formatted!
 create or alter procedure dbo.CookbookRecipeUpdate(
 	@CookbookRecipeId int  output,
 	@RecipeId int ,

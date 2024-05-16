@@ -11,7 +11,7 @@ as
 begin 
 
 	select @CookbookId= isnull(@CookbookId, 0)
-	
+--LB: User shouldn't be able to set DateCreated value. 
 	if @CookbookId =0
 	begin
 	insert CookBook(StaffId, CookBookName, DateCreated, CookBookStatus, Price)

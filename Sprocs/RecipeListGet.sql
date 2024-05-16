@@ -6,6 +6,7 @@ create or alter proc dbo.RecipeListGet(
 as 
 begin
 	select r.recipeid, RecipeName=concat(upper(substring(r.RecipeName,1,1)),substring(r.recipeName, 2, len(r.recipeName))), Status=r.RecipeStatus, Username= s.UserName,  Calorie= r.Calorie, NumIngredients= count(distinct ri.recipesequence)
+--LB: It would make more sense to select from Recipe table and join all necessary tables. Please fix.
 	from staff s 
 	left join recipe r 
 	on s.staffid = r.staffid 

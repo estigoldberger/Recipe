@@ -1,3 +1,4 @@
+--LB: Best would be to include table name in the sproc name so you know what it refers to.
 create or alter proc dbo.AutoCreate(
 	@Message varchar (500)='',
 	@StaffId int
@@ -5,7 +6,6 @@ create or alter proc dbo.AutoCreate(
 )
 as 
 begin
-
 ; with   x as 
 	(
 		
@@ -23,7 +23,6 @@ begin
 insert CookBook (CookBookName, StaffId, CookBookStatus, Price)
 select x.bookname, x.staffid, 1, x.Price
 from x 
-
 
 
 insert CookbookRecipe (r.recipeid, c.cookbookid, RecipeSequence)

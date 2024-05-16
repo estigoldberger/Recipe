@@ -6,6 +6,7 @@ as
 begin
 delete ri
 from RecipeIngredient ri 
+--LB: No need to join to Measurement table 
 join Measurement m 
 on m.MeasurementID= ri.MeasurementID
 where m.MeasurementID=@MeasurementID
