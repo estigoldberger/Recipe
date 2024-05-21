@@ -8,6 +8,7 @@ begin
 
 	select @StaffID = isnull(@StaffId,0)
 --LB: All code should be inside a transaction.
+
 	delete  cr 
 from CookbookRecipe cr 
 join CookBook c 
