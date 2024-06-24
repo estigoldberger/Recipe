@@ -1,4 +1,6 @@
-﻿namespace RecipeWinForms
+﻿using System.Windows.Forms;
+
+namespace RecipeWinForms
 {
     public partial class frmRecipeDetail : Form
     {
@@ -84,6 +86,8 @@
             btnDelete.Enabled = b;
             btnSaveIngredients.Enabled = b;
             btnSaveSteps.Enabled = b;
+            btnChangeStatus.Enabled = b;
+
 
         }
         private string GetRecipeDesc()
@@ -179,7 +183,7 @@
         private void DeleteIngredients(int rowindex)
         {
             int id = WindowsFormsUtility.GetIdFromGrid(gIng, rowindex, "RecipeIngredientId");
-            if (id > 0)
+            if (id > 0 && rowindex > 0)
             {
                 try
                 {
@@ -198,6 +202,7 @@
             {
                 gIng.Rows.RemoveAt(rowindex);
             }
+
         }
         private void DeleteSteps(int rowindex)
         {
@@ -258,7 +263,8 @@
         }
         private void GIng_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            if (gIng.Columns[e.ColumnIndex].Name == deletecol)
+
+            if (gIng.Columns[e.ColumnIndex].Name == deletecol && gIng.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 var response = MessageBox.Show("Are you sure you want to delete this ingredient?", "Recipe", MessageBoxButtons.YesNo);
                 if (response == DialogResult.No)
@@ -269,7 +275,6 @@
                 try
                 {
                     DeleteIngredients(e.RowIndex);
-                    this.Close();
                 }
                 catch (Exception ex)
                 {
@@ -284,7 +289,8 @@
         }
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            if (gSteps.Columns[e.ColumnIndex].Name == deletecol)
+
+            if (gSteps.Columns[e.ColumnIndex].Name == deletecol && gSteps.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 var response = MessageBox.Show("Are you sure you want to delete this step?", "Recipe", MessageBoxButtons.YesNo);
                 if (response == DialogResult.No)
@@ -295,7 +301,6 @@
                 try
                 {
                     DeleteSteps(e.RowIndex);
-                    this.Close();
                 }
                 catch (Exception ex)
                 {

@@ -143,7 +143,7 @@ StaffId int not null constraint f_staff_cookbook foreign key references Staff (S
 CookBookName varchar(40) not null 
     constraint ck_cookbookName_not_blank check (CookbookName <> '') 
     constraint u_cookbookName_must_be_unique unique,
-Price decimal (4, 2) not null constraint ck_price_greater_than_0 check (Price > 0),
+Price decimal (5, 2) not null constraint ck_price_greater_than_0 check (Price > 0),
 -- SM Don't allow future dates.
 DateCreated datetime not null default GETDATE () constraint ck_Cookbook_dateCreated_cannot_be_futureDate check (Datecreated <=GETDATE()),
 CookBookStatus bit not null default 1, 

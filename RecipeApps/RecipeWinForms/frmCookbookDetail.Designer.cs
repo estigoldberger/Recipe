@@ -213,16 +213,16 @@
             // 
             tblEdit.ColumnCount = 2;
             tblMain.SetColumnSpan(tblEdit, 2);
-            tblEdit.ColumnStyles.Add(new ColumnStyle());
-            tblEdit.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblEdit.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tblEdit.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 83.3333359F));
             tblEdit.Controls.Add(btnSaveRecipes, 0, 0);
             tblEdit.Controls.Add(gCookbook, 0, 1);
             tblEdit.Dock = DockStyle.Fill;
             tblEdit.Location = new Point(3, 213);
             tblEdit.Name = "tblEdit";
             tblEdit.RowCount = 2;
-            tblEdit.RowStyles.Add(new RowStyle());
-            tblEdit.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tblEdit.RowStyles.Add(new RowStyle(SizeType.Percent, 18.0327873F));
+            tblEdit.RowStyles.Add(new RowStyle(SizeType.Percent, 81.96722F));
             tblEdit.Size = new Size(1094, 414);
             tblEdit.TabIndex = 11;
             // 
@@ -232,7 +232,7 @@
             btnSaveRecipes.Dock = DockStyle.Fill;
             btnSaveRecipes.Location = new Point(3, 3);
             btnSaveRecipes.Name = "btnSaveRecipes";
-            btnSaveRecipes.Size = new Size(300, 150);
+            btnSaveRecipes.Size = new Size(176, 68);
             btnSaveRecipes.TabIndex = 0;
             btnSaveRecipes.Text = "Save";
             btnSaveRecipes.UseVisualStyleBackColor = true;
@@ -245,11 +245,11 @@
             gCookbook.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tblEdit.SetColumnSpan(gCookbook, 2);
             gCookbook.Dock = DockStyle.Fill;
-            gCookbook.Location = new Point(3, 159);
+            gCookbook.Location = new Point(3, 77);
             gCookbook.Name = "gCookbook";
             gCookbook.RowHeadersWidth = 51;
             gCookbook.RowTemplate.Height = 29;
-            gCookbook.Size = new Size(1088, 252);
+            gCookbook.Size = new Size(1088, 334);
             gCookbook.TabIndex = 1;
             // 
             // frmCookbookDetail

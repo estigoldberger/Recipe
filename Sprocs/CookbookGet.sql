@@ -5,6 +5,7 @@ create or alter proc dbo.CookbookGet(
 )
 as 
 begin
+	declare @return int=0
 	select @CookbookName = nullif(@CookbookName, '')
 
 	select c.CookBookId, c.CookbookName, Author=s.username, NumberOfRecipes=count(cr.CookbookRecipeID), c.Price
@@ -18,5 +19,6 @@ begin
 	group by c.CookBookName, s.UserName, c.Price, c.CookBookId
 	order by c.CookBookName
 
+	return @return
 end 
 go 

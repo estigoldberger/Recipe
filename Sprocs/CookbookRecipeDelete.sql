@@ -8,7 +8,7 @@ begin
 
 	select @CookbookRecipeId = isnull(@CookbookRecipeId,0)
 --LB: Please fix column typo. 
-	delete CookbookRecipe where CookookRecipeId= @CookbookRecipeId
+	delete CookbookRecipe where CookbookRecipeId= @CookbookRecipeId
 
 	return @return
 end

@@ -74,6 +74,7 @@
                 {
                     frmRecipeClone f = new();
                     newfrm = f;
+                   
                 }
 
                 else if (frmtype == typeof(frmAuto_Create))

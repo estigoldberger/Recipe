@@ -5,6 +5,7 @@ create or alter proc dbo.MealDetailsGet(
 )
 as 
 begin
+	declare @return int=0
 	select m.MealName, s.UserName, m.DateCreated, Recipes=( case 
 when c.coursename= 'Main course'and  IsMain = 1 then concat('<b>', c.CourseName, ': ', 'Main Dish - ', r.RecipeName, '</b>') when c.CourseName = 'main course' and IsMain =0 then concat(c.CourseName, ': ', 'Side Dish - ', r.RecipeName) 
 when IsMain is null then concat(c.CourseName, ': ', r.RecipeName)
@@ -22,6 +23,7 @@ end)
 	join course c 
 	on c.CourseID= mc.courseID
 	where m.MealID = @MealId
+	return @return
 end 
 go
 

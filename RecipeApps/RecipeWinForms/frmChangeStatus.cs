@@ -1,6 +1,4 @@
-﻿using CPUFramework;
-
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
     public partial class frmChangeStatus : Form
     {
@@ -88,16 +86,16 @@ namespace RecipeWinForms
 
         private void BtnPublish_Click(object? sender, EventArgs e)
         {
-            ChangeStatus("Published", "PublishRecipe");
+            ChangeStatus("Published", "Publish");
         }
 
         private void BtnDraft_Click(object? sender, EventArgs e)
         {
-            ChangeStatus("Drafted", "DraftRecipe");
+            ChangeStatus("Drafted", "Draft");
         }
         private void BtnArchive_Click(object? sender, EventArgs e)
         {
-            ChangeStatus("Archived", "ArchiveRecipe");
+            ChangeStatus("Archived", "Archive");
 
         }
        

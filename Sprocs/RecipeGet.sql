@@ -1,30 +1,30 @@
-create or alter procedure dbo.RecipeGet(
-	@Recipeid int =0, 
-	@RecipeName varchar(40)= '', 
-	@All bit =0
-	)
-as
+create or alter proc dbo.RecipeGet(
+	@RecipeId int=0,
+	@All bit=0,
+	@Message varchar(500) = '' output
+)
+as 
 begin
-	select   @Recipeid= isnull(@RecipeId, 0)
-	select r.RecipeId, r.RecipeName, r.Calorie, r.RecipeStatus, r.CuisineId, r.StaffID, r.DateDrafted, r.DatePublished, r.DateArchived, RecipeInfo= dbo.RecipeInfo(r.RecipeId), Sequence=1
-	from recipe r
-	where r.RecipeId= @Recipeid
-	or @All=1
-	union select ' ', 'Add Recipe Here',  ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ', 2
-	order by r.RecipeName, Sequence
-
 	
-end
-go 
-/*
-exec RecipeGet
+	declare @return int=0
+	select r.recipeid, RecipeName=concat(upper(substring(r.RecipeName,1,1)),substring(r.recipeName, 2, len(r.recipeName))), Status=r.RecipeStatus, Username= s.UserName,  Calorie= r.Calorie, NumIngredients= count(distinct ri.recipesequence)
+--LB: It would make more sense to select from Recipe table and join all necessary tables. Please fix.
+	from recipe r
+	left join staff s
+	on s.staffid = r.staffid 
+	left join cuisine c 
+	on c.CuisineID= r.CuisineID
+	left join recipeingredient ri 
+	on ri.recipeid= r.recipeid
+	left join ingredient i 
+	on i.ingredientid= ri.ingredientid 
+	where @RecipeId= r.RecipeId
+	or @All=1
+	group by r.RecipeName, r.RecipeStatus, s.UserName, r.Calorie, r.RecipeId
+	order by  r.RecipeStatus desc
 
-exec RecipeGet @All=1
-
-exec RecipeGet @RecipeName = 'ri'
-
-declare @id int
-select top 1 @id= r.RecipeId from Recipe r
-exec RecipeGet @Recipeid= @id */
-
+	return @return 
+end 
+go
+--exec RecipeGet @All=1
 

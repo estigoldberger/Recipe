@@ -12,7 +12,6 @@ begin
 from CookbookRecipe cr
 where cr.CookBookId= @CookbookId 
 or cr.CookbookRecipeID= @CookbookRecipeId
-
 order by cr.RecipeSequence
 
 	return @return

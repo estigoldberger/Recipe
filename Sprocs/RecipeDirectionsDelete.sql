@@ -6,8 +6,6 @@ as
 begin
 	declare @return int = 0
 
-	
-
 	delete RecipeDirection 
 	where RecipeDirectionID= @RecipeDirectionId
 

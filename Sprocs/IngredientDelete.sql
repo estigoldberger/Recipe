@@ -4,16 +4,22 @@ create or alter proc dbo.IngredientDelete(
 )
 as
 begin
-delete ri
-from RecipeIngredient ri 
+	declare @return int=0
+	begin tran 
+		begin try
+			delete ri
+			from RecipeIngredient ri 
 --LB: Unnecessary to join to ingredient table.
-join ingredient i 
-on i.ingredientid= ri.ingredientid
-where i.IngredientID= @IngredientId
 
-delete i 
-from Ingredient i 
-where i.IngredientID= @IngredientId
-
+			delete i 
+			from Ingredient i 
+			where i.IngredientID= @IngredientId
+		commit 
+		end try 
+		begin catch
+			rollback;
+			throw
+		end catch
+	return @return
 end 
 go 

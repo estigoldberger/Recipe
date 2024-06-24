@@ -13,11 +13,11 @@ begin
 	select @All = isnull(@All,0), @RecipeIngredientId = isnull(@RecipeIngredientId,0), @RecipeId=isnull(@RecipeId,0)
 
 	select   ri.RecipeIngredientID,  ri.recipeId, ri.IngredientId, ri.measurementId, ri.Amount, Sequence= ri.RecipeSequence
-from  RecipeIngredient ri 
-where ri.RecipeIngredientID= @RecipeIngredientId
-or ri.RecipeId= @RecipeId
-or @All=1
-order by ri.RecipeSequence, ri.Amount
+	from  RecipeIngredient ri 
+	where ri.RecipeIngredientID= @RecipeIngredientId
+	or ri.RecipeId= @RecipeId
+	or @All=1
+	order by ri.RecipeSequence, ri.Amount
 
 
 	return @return

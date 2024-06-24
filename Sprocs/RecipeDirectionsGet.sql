@@ -10,12 +10,12 @@ begin
 
 	select @All = isnull(@All,0), @RecipeDirectionId = isnull(@RecipeDirectionId,0), @RecipeId=isnull(@RecipeId,0)
 
-select rd.RecipeDirectionID, rd.Direction, Sequence= rd.DirectionSequence, rd.RecipeID
-from RecipeDirection rd 
+	select rd.RecipeDirectionID, rd.Direction, Sequence= rd.DirectionSequence, rd.RecipeID
+	from RecipeDirection rd 
 
-where rd.RecipeId= @RecipeId
+	where rd.RecipeId= @RecipeId
 
-order by rd.DirectionSequence 
+	order by rd.DirectionSequence 
  
 
 	return @return

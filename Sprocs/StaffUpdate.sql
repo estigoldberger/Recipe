@@ -22,9 +22,9 @@ begin
 	begin
 		update Staff
 		set
-			LastName = @LastName,
-			FirstName= @FirstName,
-			UserName= @UserName
+		LastName = @LastName,
+		FirstName= @FirstName,
+		UserName= @UserName
 		where StaffId = @StaffId
 	end
 	

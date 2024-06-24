@@ -20,7 +20,7 @@ begin
 	begin
 		update Measurement
 		set
-			MeasurementType= @MeasurementType
+		MeasurementType= @MeasurementType
 		where @MeasurementId=@MeasurementId
 	end
 	

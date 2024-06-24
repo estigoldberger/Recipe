@@ -1,4 +1,6 @@
-﻿namespace RecipeWinForms
+﻿using RecipeSystem;
+
+namespace RecipeWinForms
 {
     public partial class frmCookbookDetail : Form
     {
@@ -150,11 +152,9 @@
             {
                 try
                 {
-
-
                     CookbookRecipe.Delete(id);
-
-
+                    dtRecipes = CookbookRecipe.LoadByCookbookId(cookbookid);
+                    gCookbook.DataSource = dtRecipes;
                 }
                 catch (Exception ex)
                 {
@@ -165,6 +165,7 @@
             {
                 gCookbook.Rows.RemoveAt(rowindex);
             }
+
 
         }
 
@@ -184,7 +185,7 @@
         private void GCookbook_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
 
-            if (gCookbook.Columns[e.ColumnIndex].Name == delete)
+            if (gCookbook.Columns[e.ColumnIndex].Name == delete && gCookbook.Rows.Count > 1)
             {
                 var response = MessageBox.Show("Are you sure you want to delete this recipe?", "Cookbook", MessageBoxButtons.YesNo);
                 if (response == DialogResult.No)
@@ -195,7 +196,6 @@
                 try
                 {
                     DeleteRecipe(e.RowIndex);
-                    this.Close();
                 }
                 catch (Exception ex)
                 {

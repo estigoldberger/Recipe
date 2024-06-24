@@ -28,5 +28,14 @@
             SQLUtility.SetParameterValue(cmd, "@CookbookId", id);
             SQLUtility.ExecuteSQL(cmd);
         }
+        public static int AutoCreateCookbook(int staffid)
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand("AutoCreateCookbook");
+            SQLUtility.SetParameterValue(cmd, "@StaffId", staffid);
+            SQLUtility.SetParameterValue(cmd, "@CookbookId", 0);
+            SQLUtility.ExecuteSQL(cmd);
+            int newcookbookid = (int)cmd.Parameters["@CookbookId"].Value;
+            return newcookbookid;
+        }
     }
 }

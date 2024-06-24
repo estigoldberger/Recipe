@@ -11,19 +11,19 @@ create or alter proc dbo.RecipeUpdate(
 )
 as
 begin 
-
+	declare @return int=0
 	select @RecipeId= isnull(@RecipeId, 0)
 	
 	if @RecipeId =0
 	begin
-	insert Recipe(StaffID, CuisineID, RecipeName, Calorie, DateDrafted, DatePublished, DateArchived)
-	values (@StaffID, @CuisineID, @RecipeName, @Calorie, @DateDrafted, @DatePublished, @DateArchived)
-	select @RecipeId= SCOPE_IDENTITY()
+		insert Recipe(StaffID, CuisineID, RecipeName, Calorie, DateDrafted, DatePublished, DateArchived)
+		values (@StaffID, @CuisineID, @RecipeName, @Calorie, @DateDrafted, @DatePublished, @DateArchived)
+		select @RecipeId= SCOPE_IDENTITY()
 	end
 	else 
 	begin 
-update Recipe
-set 	
+		update Recipe
+	set 	
 	StaffID=@StaffID, 
 	CuisineID=@CuisineID, 
 	RecipeName=@RecipeName, 
@@ -31,7 +31,8 @@ set
 	DateDrafted=@DateDrafted, 
 	DatePublished=@DatePublished, 
 	DateArchived=@DateArchived
-where RecipeId= @Recipeid
+	where RecipeId= @Recipeid
 	end
+	return @return 
 end 
 go

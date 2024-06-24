@@ -4,17 +4,15 @@ create or alter proc dbo.MeasurementDelete(
 )
 as
 begin
-delete ri
-from RecipeIngredient ri 
+
+	declare @return int=0
+	delete ri
+	from RecipeIngredient ri 
 --LB: No need to join to Measurement table 
-join Measurement m 
-on m.MeasurementID= ri.MeasurementID
-where m.MeasurementID=@MeasurementID
+	delete m
+	from Measurement m
+	where m.MeasurementID=@MeasurementID
 
-
-delete m
-from Measurement m
-where m.MeasurementID=@MeasurementID
-
+	return @return
 end 
 go 

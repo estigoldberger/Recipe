@@ -20,7 +20,7 @@ begin
 	begin
 		update Ingredient
 		set
-			IngredientName= @IngredientName
+		IngredientName= @IngredientName
 		where IngredientID= @IngredientId
 	end
 	

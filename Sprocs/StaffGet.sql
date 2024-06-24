@@ -4,12 +4,14 @@ create or alter procedure dbo.StaffGet(
 	@All bit =0)
 as
 begin
+declare @return int=0
 	select  @UserName = nullif(@UserName, '')
 	select s.StaffID, s.LastName, s.FirstName, s.UserName
 	from staff s
 	where s.StaffID= @Userid
 	or s.UserName like '%' + @UserName + '%'
 	or @All=1
+	return @return 
 end
 go 
 /*

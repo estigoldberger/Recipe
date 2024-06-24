@@ -21,8 +21,8 @@ begin
 	begin
 		update Course
 		set
-			CourseName= @CourseName,
-			CourseSequence= @CourseSequence
+		CourseName= @CourseName,
+		CourseSequence= @CourseSequence
 		where CourseId= @CourseId
 	end
 	

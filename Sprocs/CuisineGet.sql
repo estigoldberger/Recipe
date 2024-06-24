@@ -4,12 +4,14 @@ create or alter procedure dbo.CuisineGet(
 	@All bit =0)
 as
 begin
+	declare @return int=0
 	select  @CuisineType = nullif(@CuisineType, '')
 	select c.CuisineID, c.CuisineType
 	from cuisine c
 	where c.CuisineID= @Cuisineid
 	or c.CuisineType like '%' + @CuisineType + '%'
 	or @All=1
+	return @return
 end
 go 
 /*

@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tblMain = new TableLayoutPanel();
             lblHeader = new Label();
             lblDesc = new Label();
             dtDashboard = new DataGridView();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            tblButton = new TableLayoutPanel();
             btnMealList = new Button();
             btnCookbookList = new Button();
             btnRecipeList = new Button();
             tblMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtDashboard).BeginInit();
-            tableLayoutPanel1.SuspendLayout();
+            tblButton.SuspendLayout();
             SuspendLayout();
             // 
             // tblMain
@@ -51,7 +51,7 @@
             tblMain.Controls.Add(lblHeader, 0, 0);
             tblMain.Controls.Add(lblDesc, 0, 1);
             tblMain.Controls.Add(dtDashboard, 0, 2);
-            tblMain.Controls.Add(tableLayoutPanel1, 0, 3);
+            tblMain.Controls.Add(tblButton, 0, 3);
             tblMain.Dock = DockStyle.Fill;
             tblMain.Location = new Point(0, 0);
             tblMain.Name = "tblMain";
@@ -97,15 +97,15 @@
             dtDashboard.BackgroundColor = SystemColors.Control;
             dtDashboard.BorderStyle = BorderStyle.None;
             dtDashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dtDashboard.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dtDashboard.DefaultCellStyle = dataGridViewCellStyle2;
             dtDashboard.Location = new Point(300, 276);
             dtDashboard.Margin = new Padding(300, 0, 100, 3);
             dtDashboard.Name = "dtDashboard";
@@ -114,23 +114,23 @@
             dtDashboard.Size = new Size(1119, 208);
             dtDashboard.TabIndex = 2;
             // 
-            // tableLayoutPanel1
+            // tblButton
             // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.7422333F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.756114F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 57.50165F));
-            tableLayoutPanel1.Controls.Add(btnMealList, 1, 0);
-            tableLayoutPanel1.Controls.Add(btnCookbookList, 2, 0);
-            tableLayoutPanel1.Controls.Add(btnRecipeList, 0, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 490);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1513, 236);
-            tableLayoutPanel1.TabIndex = 8;
+            tblButton.ColumnCount = 3;
+            tblButton.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.7422333F));
+            tblButton.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.756114F));
+            tblButton.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 57.50165F));
+            tblButton.Controls.Add(btnMealList, 1, 0);
+            tblButton.Controls.Add(btnCookbookList, 2, 0);
+            tblButton.Controls.Add(btnRecipeList, 0, 0);
+            tblButton.Dock = DockStyle.Fill;
+            tblButton.Location = new Point(3, 490);
+            tblButton.Name = "tblButton";
+            tblButton.RowCount = 1;
+            tblButton.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tblButton.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblButton.Size = new Size(1513, 236);
+            tblButton.TabIndex = 8;
             // 
             // btnMealList
             // 
@@ -178,8 +178,8 @@
             tblMain.ResumeLayout(false);
             tblMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtDashboard).EndInit();
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
+            tblButton.ResumeLayout(false);
+            tblButton.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -194,7 +194,7 @@
         private Button btnCookbookList;
         private Button btnRecipeList;
         private Button btnMealList;
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tblButton;
         private Button button1;
         private Button button2;
         private Button button3;

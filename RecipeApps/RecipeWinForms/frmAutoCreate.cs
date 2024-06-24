@@ -15,9 +15,21 @@ namespace RecipeWinForms
         private void CreateCookbook()
         {
             int staffid = WindowsFormsUtility.GetIdFromComboBox(lstUserName);
-            SqlCommand cmd = SQLUtility.GetSqlCommand("AutoCreate");
-            SQLUtility.SetParameterValue(cmd, "@StaffId", staffid);
-            SQLUtility.ExecuteSQL(cmd);
+            try
+            {
+                int newid = Cookbooks.AutoCreateCookbook(staffid);  
+                if (this.MdiParent != null && this.MdiParent is frmMain)
+                {
+                    ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbookDetail), newid);
+
+                }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Recipe");
+            }
+
         }
        
         private void AutoCreateUserName()
@@ -29,11 +41,7 @@ namespace RecipeWinForms
         private void BtnCreate_Click(object? sender, EventArgs e)
         {
             CreateCookbook();
-            if (this.MdiParent != null && this.MdiParent is frmMain)
-            {
-                ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbookList));
-                this.Close();
-            }
+         
 
 
 
