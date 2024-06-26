@@ -50,7 +50,7 @@ namespace RecipeTest
             TestContext.WriteLine("DatePublished for recipeid " + recipeid + " is " + DatePublished);
             DatePublished = DatePublished.AddDays(1);
             TestContext.WriteLine("change DatePublished to " + DatePublished);
-            DataTable dt = Recipes.RecipeDetails(recipeid);
+            DataTable dt = Recipes.GetRecipeDetails(recipeid);
             dt.Rows[0]["DatePublished"] = DatePublished;
             Recipes.Save(dt); ;
             DateTime newDatePublished = GetDate("select datepublished from recipe where recipeid= " + recipeid);
@@ -66,7 +66,7 @@ namespace RecipeTest
             TestContext.WriteLine("recipename= " + recipename);
             recipename = " ";
             TestContext.WriteLine("change recipename to " + recipename);
-            DataTable dt = Recipes.RecipeDetails(recipeid);
+            DataTable dt = Recipes.GetRecipeDetails(recipeid);
             dt.Rows[0]["RecipeName"] = recipename;
             Exception ex = Assert.Throws<Exception>(() => Recipes.Save(dt));
             TestContext.WriteLine(ex.Message);
@@ -79,7 +79,7 @@ namespace RecipeTest
             string currentname = GetFirstColumnFirstRowValueAsString("select recipename from recipe where recipeid =" + recipeid);
             TestContext.WriteLine("recipename= " + currentname);
             TestContext.WriteLine("change recipename for recipeid " + recipeid + " from " + currentname + " to " + recipename);
-            DataTable dt = Recipes.RecipeDetails(recipeid);
+            DataTable dt = Recipes.GetRecipeDetails(recipeid);
             dt.Rows[0]["RecipeName"] = recipename;
             Exception ex = Assert.Throws<Exception>(() => Recipes.Save(dt));
             TestContext.WriteLine(ex.Message);
@@ -154,7 +154,7 @@ namespace RecipeTest
             Assume.That(recipeid > 0, "No recipes in DB, can't run test");
             TestContext.WriteLine("existing recipe with id= " + recipeid);
             TestContext.WriteLine("Ensure that app loads recipe " + recipeid);
-            DataTable dt = Recipes.RecipeDetails(recipeid);
+            DataTable dt = Recipes.GetRecipeDetails(recipeid);
             int loadedid = (int)dt.Rows[0]["recipeid"];
             Assert.IsTrue(loadedid == recipeid, loadedid + "<>" + recipeid);
             TestContext.WriteLine("Loaded recipe(" + recipeid + ")");
