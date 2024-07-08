@@ -7,7 +7,6 @@ as
 begin
 	declare @return int=0
 	select @CuisineId = isnull(@CuisineId,0)
---LB: This should be inside a transaction.
 	begin try
 		begin tran
 
@@ -42,7 +41,6 @@ begin
 		where r.cuisineId= @CuisineId
 
 		delete r
---LB: Unnecessary to select from Cuisine, you can base the where clause on the cuisineId in the recipe table. Same for the select above.
 		from recipe r
 	where r.cuisineId= @CuisineId
 

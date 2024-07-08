@@ -5,7 +5,6 @@ create or alter proc dbo.RecipeDetailsGet(
 )
 as 
 begin
---LB: It's unnecessary to join all the related tables. Please remove all unnecessary code. (For the dropdowns, it should be enough to return StaffId and CuisineId from the recipe table in order to load up the details page.)
 	declare @return int=0
 	
 	select r.recipeid, RecipeName=concat(upper(substring(r.RecipeName,1,1)),substring(r.recipeName, 2, len(r.recipeName))), Status=r.RecipeStatus,  r.staffId, Calorie= r.Calorie, NumIngredients= count(distinct ri.recipesequence), r.CuisineID, r.DateDrafted, r.DateArchived, r.DatePublished

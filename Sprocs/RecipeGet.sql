@@ -8,8 +8,8 @@ begin
 	
 	declare @return int=0
 	select r.recipeid, RecipeName=concat(upper(substring(r.RecipeName,1,1)),substring(r.recipeName, 2, len(r.recipeName))), Status=r.RecipeStatus, Username= s.UserName,  Calorie= r.Calorie, NumIngredients= count(distinct ri.recipesequence)
---LB: It would make more sense to select from Recipe table and join all necessary tables. Please fix.
 	from recipe r
+--LB: No need to left join to staff/cuisine since they cannot contain null values.
 	left join staff s
 	on s.staffid = r.staffid 
 	left join cuisine c 

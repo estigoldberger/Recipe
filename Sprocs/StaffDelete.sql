@@ -9,7 +9,6 @@ begin
 	select @StaffID = isnull(@StaffId,0)
 	begin try 
 		begin tran
---LB: All code should be inside a transaction.
 		delete  cr 
 		from CookbookRecipe cr 
 		join CookBook c 
@@ -55,7 +54,6 @@ begin
 		on s.StaffID = m.StaffID
 		where s.StaffID=@StaffId
 
---LB: No need to join the staff table, the where clause can be based on the staff id in the recipe table. please fix all statement below.
 		delete rd
 		from RecipeDirection rd 
 		join recipe r 

@@ -9,7 +9,7 @@ begin
 		begin try
 			delete ri
 			from RecipeIngredient ri 
---LB: Unnecessary to join to ingredient table.
+--LB: You are missing the where clause in the delete above.
 
 			delete i 
 			from Ingredient i 

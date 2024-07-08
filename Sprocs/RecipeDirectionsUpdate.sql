@@ -13,7 +13,6 @@ begin
 
 	if @RecipeDirectionId = 0
 	begin
---LB: This logic is not being used. The sequence comes in as blank if it's not specified. Also, try being consistent with the sequence logic for directions and steps.
 
 		insert RecipeDirection(RecipeID, Direction,  DirectionSequence)
 		values(@RecipeId, @Direction, @Sequence)

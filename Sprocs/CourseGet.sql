@@ -1,6 +1,5 @@
 create or alter procedure dbo.CourseGet(
 	@CourseId int =0, 
---LB: @CourseType can be removed as it's not being used ion the sproc. 
 	@All bit =0)
 as
 begin

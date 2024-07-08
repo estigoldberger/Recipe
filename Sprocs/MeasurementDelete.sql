@@ -8,7 +8,8 @@ begin
 	declare @return int=0
 	delete ri
 	from RecipeIngredient ri 
---LB: No need to join to Measurement table 
+--LB: It seems like you are missing the where clause for the delete above.
+
 	delete m
 	from Measurement m
 	where m.MeasurementID=@MeasurementID
