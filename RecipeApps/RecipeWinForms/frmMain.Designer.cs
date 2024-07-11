@@ -58,7 +58,7 @@
             mnuMain.Location = new Point(0, 0);
             mnuMain.Margin = new Padding(20, 0, 0, 0);
             mnuMain.Name = "mnuMain";
-            mnuMain.Size = new Size(1010, 36);
+            mnuMain.Size = new Size(1064, 36);
             mnuMain.TabIndex = 2;
             mnuMain.Text = "menuStrip1";
             // 
@@ -176,7 +176,7 @@
             tsMain.ImageScalingSize = new Size(20, 20);
             tsMain.Location = new Point(0, 36);
             tsMain.Name = "tsMain";
-            tsMain.Size = new Size(1010, 25);
+            tsMain.Size = new Size(1064, 25);
             tsMain.TabIndex = 3;
             tsMain.Text = "toolStrip1";
             // 
@@ -185,7 +185,7 @@
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1010, 630);
+            ClientSize = new Size(1064, 731);
             Controls.Add(tsMain);
             Controls.Add(mnuMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);

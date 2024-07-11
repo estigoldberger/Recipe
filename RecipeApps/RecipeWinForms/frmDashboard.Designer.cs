@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             tblMain = new TableLayoutPanel();
             lblHeader = new Label();
             lblDesc = new Label();
@@ -60,7 +60,7 @@
             tblMain.RowStyles.Add(new RowStyle());
             tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 211F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 79F));
-            tblMain.Size = new Size(1466, 729);
+            tblMain.Size = new Size(1466, 587);
             tblMain.TabIndex = 0;
             // 
             // lblHeader
@@ -97,15 +97,15 @@
             dtDashboard.BackgroundColor = SystemColors.Control;
             dtDashboard.BorderStyle = BorderStyle.None;
             dtDashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dtDashboard.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dtDashboard.DefaultCellStyle = dataGridViewCellStyle1;
             dtDashboard.Location = new Point(300, 276);
             dtDashboard.Margin = new Padding(300, 0, 100, 3);
             dtDashboard.Name = "dtDashboard";
@@ -129,7 +129,7 @@
             tblButton.RowCount = 1;
             tblButton.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tblButton.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblButton.Size = new Size(1513, 236);
+            tblButton.Size = new Size(1513, 94);
             tblButton.TabIndex = 8;
             // 
             // btnMealList
@@ -169,7 +169,7 @@
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1466, 729);
+            ClientSize = new Size(1466, 587);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);

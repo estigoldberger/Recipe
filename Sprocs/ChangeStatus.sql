@@ -9,6 +9,7 @@ begin
 	if @ChangeTo= 'Publish'
 	update Recipe 
 	set
+	DateArchived=null,
 	DatePublished=convert(varchar, GETDATE(),1)
 	where RecipeId= @RecipeId
 
@@ -22,6 +23,7 @@ begin
 	update Recipe 
 	set
 	DatePublished=null,
+	DateArchived=null,
 	DateDrafted=convert(varchar, GETDATE(),1)
 	where RecipeId= @RecipeId
 

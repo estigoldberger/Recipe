@@ -44,7 +44,7 @@ begin
 		delete r
 --LB: Unnecessary to select from Cuisine, you can base the where clause on the cuisineId in the recipe table. Same for the select above.
 		from recipe r
-	where r.cuisineId= @CuisineId
+		where r.cuisineId= @CuisineId
 
 
 		delete c

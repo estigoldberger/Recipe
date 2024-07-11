@@ -47,14 +47,14 @@
             tblMain.RowCount = 1;
             tblMain.RowStyles.Add(new RowStyle());
             tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblMain.Size = new Size(610, 235);
+            tblMain.Size = new Size(610, 136);
             tblMain.TabIndex = 0;
             // 
             // lstUserName
             // 
             lstUserName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lstUserName.FormattingEnabled = true;
-            lstUserName.Location = new Point(50, 103);
+            lstUserName.Location = new Point(50, 54);
             lstUserName.Margin = new Padding(50, 3, 50, 3);
             lstUserName.Name = "lstUserName";
             lstUserName.Size = new Size(205, 28);
@@ -64,7 +64,7 @@
             // 
             btnCreate.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             btnCreate.AutoSize = true;
-            btnCreate.Location = new Point(308, 102);
+            btnCreate.Location = new Point(308, 53);
             btnCreate.Margin = new Padding(3, 3, 110, 3);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(192, 30);
@@ -76,7 +76,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(610, 235);
+            ClientSize = new Size(610, 136);
             Controls.Add(tblMain);
             Name = "frmAuto_Create";
             Text = "Auto Create a Cookbook";

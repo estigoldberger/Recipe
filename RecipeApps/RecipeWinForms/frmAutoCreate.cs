@@ -17,7 +17,7 @@ namespace RecipeWinForms
             int staffid = WindowsFormsUtility.GetIdFromComboBox(lstUserName);
             try
             {
-                int newid = Cookbooks.AutoCreateCookbook(staffid);  
+                int newid = Cookbooks.AutoCreateCookbook(staffid);
                 if (this.MdiParent != null && this.MdiParent is frmMain)
                 {
                     ((frmMain)this.MdiParent).OpenForm(typeof(frmCookbookDetail), newid);
@@ -31,17 +31,17 @@ namespace RecipeWinForms
             }
 
         }
-       
+
         private void AutoCreateUserName()
         {
             DataTable dtusers = Recipes.UserDetails();
             WindowsFormsUtility.SetListBinding(lstUserName, dtusers, null, "Staff");
-            
+
         }
         private void BtnCreate_Click(object? sender, EventArgs e)
         {
             CreateCookbook();
-         
+
 
 
 

@@ -74,7 +74,7 @@
                 {
                     frmRecipeClone f = new();
                     newfrm = f;
-                   
+
                 }
 
                 else if (frmtype == typeof(frmAuto_Create))
@@ -92,8 +92,8 @@
                     frmDataMaintenance f = new();
                     newfrm = f;
                 }
-                else if(frmtype== typeof(frmChangeStatus))
-                    {
+                else if (frmtype == typeof(frmChangeStatus))
+                {
                     frmChangeStatus f = new();
                     newfrm = f;
                     f.LoadForm(pkvalue);

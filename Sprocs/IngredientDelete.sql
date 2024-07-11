@@ -9,6 +9,7 @@ begin
 		begin try
 			delete ri
 			from RecipeIngredient ri 
+			where ri.IngredientID=@IngredientId
 --LB: Unnecessary to join to ingredient table.
 
 			delete i 

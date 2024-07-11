@@ -12,7 +12,7 @@ begin
 	select distinct m.MealID,m.MealName,MealUser= s.username, NumberOfCalories=dbo.MealCalorieCount(m.MealID), NumberofCourses = count(distinct mc.MealCourseID), NumberofRecipes= count(distinct rm.RecipeID)
 --LB: Improvement would be to select from meal, and then join to staff. Joining the recipe table shouldn't be needed.
 	from meal m 
-	left join staff s
+	join staff s
 	on s.StaffID = m.StaffID
 	join MealCourse mc 
 	on m.MealID = mc.Mealid 

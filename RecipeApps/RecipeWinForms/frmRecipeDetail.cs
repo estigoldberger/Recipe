@@ -70,7 +70,12 @@ namespace RecipeWinForms
             WindowsFormsUtility.AddComboBoxToGrid(gIng, DataMaintenance.GetDataList("Ingredient"), "Ingredient", "IngredientName");
             WindowsFormsUtility.AddComboBoxToGrid(gIng, DataMaintenance.GetDataList("Measurement"), "Measurement", "MeasurementType");
             WindowsFormsUtility.FormatGridForEdit(gIng, "RecipeIngredient");
+
+
         }
+
+
+
         private void LoadDirections()
         {
             gSteps.Columns.Clear();

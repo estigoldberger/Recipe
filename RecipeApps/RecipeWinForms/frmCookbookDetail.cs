@@ -1,4 +1,5 @@
 ﻿using RecipeSystem;
+using System.Net.NetworkInformation;
 
 namespace RecipeWinForms
 {
@@ -185,7 +186,7 @@ namespace RecipeWinForms
         private void GCookbook_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
 
-            if (gCookbook.Columns[e.ColumnIndex].Name == delete && gCookbook.Rows.Count > 1)
+            if (gCookbook.Columns[e.ColumnIndex].Name == delete && gCookbook.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 var response = MessageBox.Show("Are you sure you want to delete this recipe?", "Cookbook", MessageBoxButtons.YesNo);
                 if (response == DialogResult.No)

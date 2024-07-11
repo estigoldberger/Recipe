@@ -10,9 +10,9 @@ begin
 	select r.recipeid, RecipeName=concat(upper(substring(r.RecipeName,1,1)),substring(r.recipeName, 2, len(r.recipeName))), Status=r.RecipeStatus, Username= s.UserName,  Calorie= r.Calorie, NumIngredients= count(distinct ri.recipesequence)
 --LB: It would make more sense to select from Recipe table and join all necessary tables. Please fix.
 	from recipe r
-	left join staff s
+	join staff s
 	on s.staffid = r.staffid 
-	left join cuisine c 
+	join cuisine c 
 	on c.CuisineID= r.CuisineID
 	left join recipeingredient ri 
 	on ri.recipeid= r.recipeid

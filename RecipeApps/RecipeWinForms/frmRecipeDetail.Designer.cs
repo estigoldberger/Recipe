@@ -41,7 +41,7 @@
             btnSave = new Button();
             btnDelete = new Button();
             btnChangeStatus = new Button();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            tblStatus = new TableLayoutPanel();
             lblDrafted = new Label();
             lblPublished = new Label();
             txtDatePublished = new TextBox();
@@ -59,16 +59,18 @@
             tbSteps = new TabPage();
             tblSteps = new TableLayoutPanel();
             btnSaveSteps = new Button();
+            pnlSteps = new Panel();
             gSteps = new DataGridView();
             tblMain.SuspendLayout();
             tblButtons.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
+            tblStatus.SuspendLayout();
             tbRecipeDetails.SuspendLayout();
             tbIngredients.SuspendLayout();
             tblIng.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gIng).BeginInit();
             tbSteps.SuspendLayout();
             tblSteps.SuspendLayout();
+            pnlSteps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gSteps).BeginInit();
             SuspendLayout();
             // 
@@ -89,7 +91,7 @@
             tblMain.Controls.Add(lstUserName, 2, 4);
             tblMain.Controls.Add(lblRecipeName, 1, 1);
             tblMain.Controls.Add(tblButtons, 1, 0);
-            tblMain.Controls.Add(tableLayoutPanel1, 2, 5);
+            tblMain.Controls.Add(tblStatus, 2, 5);
             tblMain.Controls.Add(lblStatus, 1, 5);
             tblMain.Controls.Add(lblCurrentStatus, 1, 6);
             tblMain.Controls.Add(txtStatus, 2, 6);
@@ -105,17 +107,16 @@
             tblMain.RowStyles.Add(new RowStyle());
             tblMain.RowStyles.Add(new RowStyle());
             tblMain.RowStyles.Add(new RowStyle());
-            tblMain.RowStyles.Add(new RowStyle());
-            tblMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblMain.Size = new Size(758, 810);
+            tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tblMain.Size = new Size(770, 834);
             tblMain.TabIndex = 0;
             // 
             // txtRecipeName
             // 
             txtRecipeName.Dock = DockStyle.Fill;
-            txtRecipeName.Location = new Point(370, 67);
+            txtRecipeName.Location = new Point(376, 67);
             txtRecipeName.Name = "txtRecipeName";
-            txtRecipeName.Size = new Size(328, 27);
+            txtRecipeName.Size = new Size(334, 27);
             txtRecipeName.TabIndex = 2;
             // 
             // lblCalories
@@ -124,16 +125,16 @@
             lblCalories.Dock = DockStyle.Fill;
             lblCalories.Location = new Point(36, 97);
             lblCalories.Name = "lblCalories";
-            lblCalories.Size = new Size(328, 33);
+            lblCalories.Size = new Size(334, 33);
             lblCalories.TabIndex = 5;
             lblCalories.Text = "Calories";
             // 
             // txtCalorie
             // 
             txtCalorie.Dock = DockStyle.Fill;
-            txtCalorie.Location = new Point(370, 100);
+            txtCalorie.Location = new Point(376, 100);
             txtCalorie.Name = "txtCalorie";
-            txtCalorie.Size = new Size(328, 27);
+            txtCalorie.Size = new Size(334, 27);
             txtCalorie.TabIndex = 7;
             // 
             // lblCuisine
@@ -142,7 +143,7 @@
             lblCuisine.Dock = DockStyle.Fill;
             lblCuisine.Location = new Point(36, 130);
             lblCuisine.Name = "lblCuisine";
-            lblCuisine.Size = new Size(328, 34);
+            lblCuisine.Size = new Size(334, 34);
             lblCuisine.TabIndex = 11;
             lblCuisine.Text = "Cuisine";
             // 
@@ -152,7 +153,7 @@
             lblUser.Dock = DockStyle.Fill;
             lblUser.Location = new Point(36, 164);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(328, 34);
+            lblUser.Size = new Size(334, 34);
             lblUser.TabIndex = 12;
             lblUser.Text = "User";
             // 
@@ -160,18 +161,18 @@
             // 
             lstCuisineType.Dock = DockStyle.Fill;
             lstCuisineType.FormattingEnabled = true;
-            lstCuisineType.Location = new Point(370, 133);
+            lstCuisineType.Location = new Point(376, 133);
             lstCuisineType.Name = "lstCuisineType";
-            lstCuisineType.Size = new Size(328, 28);
+            lstCuisineType.Size = new Size(334, 28);
             lstCuisineType.TabIndex = 13;
             // 
             // lstUserName
             // 
             lstUserName.Dock = DockStyle.Fill;
             lstUserName.FormattingEnabled = true;
-            lstUserName.Location = new Point(370, 167);
+            lstUserName.Location = new Point(376, 167);
             lstUserName.Name = "lstUserName";
-            lstUserName.Size = new Size(328, 28);
+            lstUserName.Size = new Size(334, 28);
             lstUserName.TabIndex = 14;
             // 
             // lblRecipeName
@@ -180,7 +181,7 @@
             lblRecipeName.Dock = DockStyle.Fill;
             lblRecipeName.Location = new Point(36, 64);
             lblRecipeName.Name = "lblRecipeName";
-            lblRecipeName.Size = new Size(328, 33);
+            lblRecipeName.Size = new Size(334, 33);
             lblRecipeName.TabIndex = 0;
             lblRecipeName.Text = "Recipe Name";
             // 
@@ -200,7 +201,7 @@
             tblButtons.Name = "tblButtons";
             tblButtons.RowCount = 1;
             tblButtons.RowStyles.Add(new RowStyle());
-            tblButtons.Size = new Size(662, 58);
+            tblButtons.Size = new Size(674, 58);
             tblButtons.TabIndex = 25;
             // 
             // btnSave
@@ -210,7 +211,7 @@
             btnSave.Location = new Point(3, 3);
             btnSave.Margin = new Padding(3, 3, 50, 3);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(100, 52);
+            btnSave.Size = new Size(103, 52);
             btnSave.TabIndex = 17;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
@@ -219,10 +220,10 @@
             // 
             btnDelete.AutoSize = true;
             btnDelete.Dock = DockStyle.Top;
-            btnDelete.Location = new Point(156, 3);
+            btnDelete.Location = new Point(159, 3);
             btnDelete.Margin = new Padding(3, 3, 50, 3);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(86, 52);
+            btnDelete.Size = new Size(89, 52);
             btnDelete.TabIndex = 18;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
@@ -231,34 +232,34 @@
             // 
             btnChangeStatus.AutoSize = true;
             btnChangeStatus.Dock = DockStyle.Top;
-            btnChangeStatus.Location = new Point(372, 3);
+            btnChangeStatus.Location = new Point(378, 3);
             btnChangeStatus.Margin = new Padding(80, 3, 3, 3);
             btnChangeStatus.Name = "btnChangeStatus";
-            btnChangeStatus.Size = new Size(287, 52);
+            btnChangeStatus.Size = new Size(293, 52);
             btnChangeStatus.TabIndex = 19;
             btnChangeStatus.Text = "Change Status";
             btnChangeStatus.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // tblStatus
             // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 105F));
-            tableLayoutPanel1.Controls.Add(lblDrafted, 0, 0);
-            tableLayoutPanel1.Controls.Add(lblPublished, 1, 0);
-            tableLayoutPanel1.Controls.Add(txtDatePublished, 1, 1);
-            tableLayoutPanel1.Controls.Add(txtDateArchived, 2, 1);
-            tableLayoutPanel1.Controls.Add(lblArchived, 2, 0);
-            tableLayoutPanel1.Controls.Add(txtDateDrafted, 0, 1);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(370, 201);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(328, 63);
-            tableLayoutPanel1.TabIndex = 26;
+            tblStatus.ColumnCount = 3;
+            tblStatus.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tblStatus.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tblStatus.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 105F));
+            tblStatus.Controls.Add(lblDrafted, 0, 0);
+            tblStatus.Controls.Add(lblPublished, 1, 0);
+            tblStatus.Controls.Add(txtDatePublished, 1, 1);
+            tblStatus.Controls.Add(txtDateArchived, 2, 1);
+            tblStatus.Controls.Add(lblArchived, 2, 0);
+            tblStatus.Controls.Add(txtDateDrafted, 0, 1);
+            tblStatus.Dock = DockStyle.Fill;
+            tblStatus.Location = new Point(376, 201);
+            tblStatus.Name = "tblStatus";
+            tblStatus.RowCount = 2;
+            tblStatus.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tblStatus.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tblStatus.Size = new Size(334, 63);
+            tblStatus.TabIndex = 26;
             // 
             // lblDrafted
             // 
@@ -272,7 +273,7 @@
             // lblPublished
             // 
             lblPublished.AutoSize = true;
-            lblPublished.Location = new Point(114, 0);
+            lblPublished.Location = new Point(117, 0);
             lblPublished.Name = "lblPublished";
             lblPublished.Size = new Size(73, 20);
             lblPublished.TabIndex = 1;
@@ -281,7 +282,7 @@
             // txtDatePublished
             // 
             txtDatePublished.Enabled = false;
-            txtDatePublished.Location = new Point(114, 34);
+            txtDatePublished.Location = new Point(117, 34);
             txtDatePublished.Name = "txtDatePublished";
             txtDatePublished.ReadOnly = true;
             txtDatePublished.Size = new Size(100, 27);
@@ -290,7 +291,7 @@
             // txtDateArchived
             // 
             txtDateArchived.Enabled = false;
-            txtDateArchived.Location = new Point(225, 34);
+            txtDateArchived.Location = new Point(231, 34);
             txtDateArchived.Name = "txtDateArchived";
             txtDateArchived.ReadOnly = true;
             txtDateArchived.Size = new Size(99, 27);
@@ -299,7 +300,7 @@
             // lblArchived
             // 
             lblArchived.AutoSize = true;
-            lblArchived.Location = new Point(225, 0);
+            lblArchived.Location = new Point(231, 0);
             lblArchived.Name = "lblArchived";
             lblArchived.Size = new Size(67, 20);
             lblArchived.TabIndex = 2;
@@ -335,7 +336,7 @@
             // txtStatus
             // 
             txtStatus.Enabled = false;
-            txtStatus.Location = new Point(370, 270);
+            txtStatus.Location = new Point(376, 270);
             txtStatus.Name = "txtStatus";
             txtStatus.ReadOnly = true;
             txtStatus.Size = new Size(125, 27);
@@ -348,9 +349,10 @@
             tbRecipeDetails.Controls.Add(tbSteps);
             tbRecipeDetails.Dock = DockStyle.Fill;
             tbRecipeDetails.Location = new Point(36, 303);
+            tbRecipeDetails.Margin = new Padding(3, 3, 3, 10);
             tbRecipeDetails.Name = "tbRecipeDetails";
             tbRecipeDetails.SelectedIndex = 0;
-            tbRecipeDetails.Size = new Size(662, 504);
+            tbRecipeDetails.Size = new Size(674, 521);
             tbRecipeDetails.TabIndex = 29;
             // 
             // tbIngredients
@@ -361,7 +363,7 @@
             tbIngredients.Location = new Point(4, 29);
             tbIngredients.Name = "tbIngredients";
             tbIngredients.Padding = new Padding(3);
-            tbIngredients.Size = new Size(654, 471);
+            tbIngredients.Size = new Size(666, 488);
             tbIngredients.TabIndex = 0;
             tbIngredients.Text = "Ingredients";
             tbIngredients.UseVisualStyleBackColor = true;
@@ -369,20 +371,19 @@
             // tblIng
             // 
             tblIng.AutoScroll = true;
-            tblIng.AutoScrollMargin = new Size(1, 1);
-            tblIng.AutoScrollMinSize = new Size(1, 1);
             tblIng.AutoSize = true;
             tblIng.ColumnCount = 1;
             tblIng.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblIng.Controls.Add(btnSaveIngredients, 0, 0);
-            tblIng.Controls.Add(gIng, 0, 1);
+            tblIng.Controls.Add(gIng, 0, 2);
             tblIng.Dock = DockStyle.Fill;
             tblIng.Location = new Point(3, 3);
             tblIng.Name = "tblIng";
-            tblIng.RowCount = 2;
+            tblIng.RowCount = 3;
             tblIng.RowStyles.Add(new RowStyle());
             tblIng.RowStyles.Add(new RowStyle());
-            tblIng.Size = new Size(648, 465);
+            tblIng.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblIng.Size = new Size(660, 482);
             tblIng.TabIndex = 0;
             // 
             // btnSaveIngredients
@@ -406,38 +407,37 @@
             gIng.Name = "gIng";
             gIng.RowHeadersWidth = 51;
             gIng.RowTemplate.Height = 29;
-            gIng.Size = new Size(642, 959);
+            gIng.Size = new Size(654, 441);
             gIng.TabIndex = 1;
             // 
             // tbSteps
             // 
             tbSteps.AutoScroll = true;
+            tbSteps.AutoScrollMargin = new Size(5, 5);
             tbSteps.Controls.Add(tblSteps);
             tbSteps.Location = new Point(4, 29);
             tbSteps.Name = "tbSteps";
             tbSteps.Padding = new Padding(3);
-            tbSteps.Size = new Size(654, 471);
+            tbSteps.Size = new Size(666, 488);
             tbSteps.TabIndex = 1;
             tbSteps.Text = "Steps";
             tbSteps.UseVisualStyleBackColor = true;
             // 
             // tblSteps
             // 
-            tblSteps.AutoScroll = true;
-            tblSteps.AutoScrollMargin = new Size(1, 1);
             tblSteps.AutoSize = true;
             tblSteps.ColumnCount = 1;
             tblSteps.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblSteps.Controls.Add(btnSaveSteps, 0, 0);
-            tblSteps.Controls.Add(gSteps, 0, 1);
+            tblSteps.Controls.Add(pnlSteps, 0, 2);
             tblSteps.Dock = DockStyle.Fill;
             tblSteps.Location = new Point(3, 3);
             tblSteps.Name = "tblSteps";
-            tblSteps.RowCount = 2;
+            tblSteps.RowCount = 3;
             tblSteps.RowStyles.Add(new RowStyle());
             tblSteps.RowStyles.Add(new RowStyle());
             tblSteps.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblSteps.Size = new Size(648, 465);
+            tblSteps.Size = new Size(660, 482);
             tblSteps.TabIndex = 0;
             // 
             // btnSaveSteps
@@ -449,6 +449,16 @@
             btnSaveSteps.Text = "Save";
             btnSaveSteps.UseVisualStyleBackColor = true;
             // 
+            // pnlSteps
+            // 
+            pnlSteps.AutoScroll = true;
+            pnlSteps.Controls.Add(gSteps);
+            pnlSteps.Dock = DockStyle.Fill;
+            pnlSteps.Location = new Point(3, 38);
+            pnlSteps.Name = "pnlSteps";
+            pnlSteps.Size = new Size(654, 441);
+            pnlSteps.TabIndex = 1;
+            // 
             // gSteps
             // 
             gSteps.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -457,12 +467,12 @@
             gSteps.BorderStyle = BorderStyle.None;
             gSteps.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gSteps.Dock = DockStyle.Fill;
-            gSteps.Location = new Point(3, 38);
+            gSteps.Location = new Point(0, 0);
             gSteps.Name = "gSteps";
             gSteps.RowHeadersWidth = 51;
             gSteps.RowTemplate.Height = 29;
-            gSteps.Size = new Size(642, 424);
-            gSteps.TabIndex = 1;
+            gSteps.Size = new Size(654, 441);
+            gSteps.TabIndex = 0;
             // 
             // frmRecipeDetail
             // 
@@ -470,7 +480,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             AutoSize = true;
-            ClientSize = new Size(758, 810);
+            ClientSize = new Size(770, 834);
             Controls.Add(tblMain);
             Name = "frmRecipeDetail";
             Text = "Recipe Details";
@@ -478,8 +488,8 @@
             tblMain.PerformLayout();
             tblButtons.ResumeLayout(false);
             tblButtons.PerformLayout();
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
+            tblStatus.ResumeLayout(false);
+            tblStatus.PerformLayout();
             tbRecipeDetails.ResumeLayout(false);
             tbIngredients.ResumeLayout(false);
             tbIngredients.PerformLayout();
@@ -488,6 +498,7 @@
             tbSteps.ResumeLayout(false);
             tbSteps.PerformLayout();
             tblSteps.ResumeLayout(false);
+            pnlSteps.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gSteps).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -509,7 +520,7 @@
         private Label lblStatus;
         private TableLayoutPanel tblButtons;
         private Button btnChangeStatus;
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tblStatus;
         private Label lblDrafted;
         private Label lblPublished;
         private TextBox txtDatePublished;
@@ -523,9 +534,10 @@
         private TabPage tbSteps;
         private TableLayoutPanel tblSteps;
         private Button btnSaveSteps;
-        private DataGridView gSteps;
         private TableLayoutPanel tblIng;
         private Button btnSaveIngredients;
         private DataGridView gIng;
+        private Panel pnlSteps;
+        private DataGridView gSteps;
     }
 }

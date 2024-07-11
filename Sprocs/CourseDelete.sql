@@ -12,9 +12,12 @@ begin
 			from RecipeMealCourse rmc 
 			join MealCourse mc 
 			on mc.MealCourseID= rmc.MealCourseId
+			where mc.courseID=@CourseId
 --LB: Unnecessary to join to Course table.
 			delete mc
 			from MealCourse mc
+			where mc.courseID=@CourseId
+			
 --LB: Unnecessary to join to Course table.
 			delete c
 			from Course c 
