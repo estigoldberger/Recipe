@@ -1,5 +1,6 @@
 create or alter procedure dbo.IngredientGet(
 	@IngredientId int =0, 
+	@IngredientName varchar(200)='',
 --LB: Parameter below shuld be removed.
 	@All bit =0)
 as

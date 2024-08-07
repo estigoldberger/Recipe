@@ -1,5 +1,6 @@
 create or alter proc dbo.RecipeGet(
 	@RecipeId int=0,
+	@RecipeName varchar(200)='',
 	@All bit=0,
 	@Message varchar(500) = '' output
 )
