@@ -1,20 +1,27 @@
 ﻿namespace RecipeSystem
 {
-    public class bizRecipe :bizObject<bizRecipe>
+    public class bizRecipe : bizObject<bizRecipe>
     {
-        public bizRecipe() 
+        public bizRecipe()
         {
 
         }
         private int _recipeId;
         private int _staffId;
         private int _cuisineId;
-        private string _recipename= "";
+        private string _recipename = "";
         private int _calorie;
         private DateTime _datedrafted;
         private DateTime? _datepublished;
         private DateTime? _datearchived;
+        public List<bizRecipe> GetRecipeList()
+        {
 
+            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeGet");
+            SQLUtility.SetParameterValue(cmd, "@All", 1);
+            DataTable dt = SQLUtility.GetDataTable(cmd);
+            return this.GetListFromDataTable(dt);
+        }
         public List<bizRecipe> Search(string recipenameval)
         {
             SqlCommand cmd = SQLUtility.GetSqlCommand(this.GetSprocName);
@@ -127,7 +134,7 @@
             }
         }
 
-       
+
 
     }
 }

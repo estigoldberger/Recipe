@@ -21,6 +21,7 @@ begin
 	on i.ingredientid= ri.ingredientid 
 	where @RecipeId= r.RecipeId
 	or @All=1
+	or r.recipeName like '%' + @RecipeName + '%'
 	group by r.RecipeName, r.RecipeStatus, s.UserName, r.Calorie, r.RecipeId
 	order by  r.RecipeStatus desc
 

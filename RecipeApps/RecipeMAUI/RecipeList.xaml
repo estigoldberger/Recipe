@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecipeMAUI.RecipeList"
+             Title="RecipeList">
+    <Grid ColumnDefinitions="Auto,Auto,Auto" RowDefinitions="Auto,*" HorizontalOptions="Center" RowSpacing="10" ColumnSpacing="10">
+        <Button x:Name="RecipeListBtn" Text="Click here to see a list of recipes" Grid.Column="0" Grid.Row="0" Clicked="RecipeListBtn_Clicked" />
+        <ListView x:Name="ListView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding RecipeName}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            </ListView>
+    </Grid>
+
+</ContentPage>

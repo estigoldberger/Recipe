@@ -10,6 +10,7 @@ begin
 	from Ingredient i 
 	where i.IngredientID=@IngredientId
 	or @All=1
+	or i.IngredientName like '%' + @IngredientName + '%'
 	return @return
 end
 go 
