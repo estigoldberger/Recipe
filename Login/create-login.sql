@@ -1,3 +1,3 @@
-create login main with Password = 'ASd789)!'
+create login recipeadmin with Password = '19Brewer!'
 
-create user main_user from login main
+create user recipeadmin_user from login recipeadmin
