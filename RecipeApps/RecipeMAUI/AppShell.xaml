@@ -12,7 +12,7 @@
         Route="Home" />
 
         <ShellContent
-    Title="Home"
+    Title="Recipe List"
     ContentTemplate="{DataTemplate local:RecipeList}"
     Route="RecipeList" />
 

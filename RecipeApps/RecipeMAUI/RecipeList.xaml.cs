@@ -11,9 +11,8 @@ public partial class RecipeList : ContentPage
 	}
 	private void GetRecipeList()
 	{
-		bizRecipe recipe = new();
-		var lstrecipe = recipe.GetRecipeList();
-		ListView.ItemsSource = lstrecipe;
+		DataTable dt = Recipes.GetRecipeList();
+		ListView.ItemsSource = dt.Rows;
 	}
     private void RecipeListBtn_Clicked(object sender, EventArgs e)
     {

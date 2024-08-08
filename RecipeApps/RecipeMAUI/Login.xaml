@@ -3,10 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RecipeMAUI.Login"
              Title="Login">
-    <VerticalStackLayout>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry" >
+                <Setter Property="MinimumWidthRequest" Value="200"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Login"
+            FontSize="Header"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Label x:Name="MessageLbl" FontSize="Medium" TextColor="{StaticResource Danger}" />
+        <Border Padding="10">
+        <Grid ColumnDefinitions="Auto, Auto" RowDefinitions="Auto, Auto, Auto, Auto" HorizontalOptions="Center" ColumnSpacing="10" RowSpacing="10">
+            <Label x:Name="UserNameLbl" FontSize="Medium" Text="User Name" Grid.Row="1" Grid.Column="0"/>
+            <Entry x:Name="UserNameTxt" Grid.Row="1" Grid.Column="1" Text="recipeadmin"/>
+            <Label x:Name="PasswordLbl" FontSize="Medium" Text="Password" Grid.Row="2" Grid.Column="0"/>
+            <Entry x:Name="PasswordTxt" Grid.Row="2" Grid.Column="1" IsPassword="True"/>
+            <Button x:Name="LoginBtn" Text="Login" Grid.Row="3" Grid.Column="0" Clicked="LoginBtn_Clicked"/>
+            <Button x:Name="CancelBtn" BackgroundColor="{StaticResource Warning}" Text="Cancel" Grid.Row="3" Grid.Column="1" Clicked="CancelBtn_Clicked"/>
+        </Grid>
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

@@ -7,6 +7,8 @@
 *create-login.sql
 *secret.config
 *testhost.dll.secret.config
+secret-appsettings.json
+
 
 # User-specific files
 *.rsuser
