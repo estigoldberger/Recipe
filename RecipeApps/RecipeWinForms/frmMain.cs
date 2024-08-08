@@ -21,6 +21,8 @@
         }
         private void FrmMain_Shown(object? sender, EventArgs e)
         {
+            frmLogin f = new() { StartPosition= FormStartPosition.CenterParent};
+            bool b = f.ShowLogin();
             OpenForm(typeof(frmDashboard));
         }
         public void OpenForm(Type frmtype, int pkvalue = 0)

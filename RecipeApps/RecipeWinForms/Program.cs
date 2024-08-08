@@ -14,8 +14,10 @@ namespace RecipeWinForms
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            string connstring = ConfigurationManager.ConnectionStrings["devconn"].ConnectionString;
-            DBManager.SetConnectionString(connstring);
+            frmMain f = new();
+#if DEBUG
+            f.Text = f.Text + " - DEV";
+#endif
             Application.Run(new frmMain());
         }
     }
