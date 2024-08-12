@@ -26,7 +26,7 @@ namespace RecipeMAUI
             builder.Configuration.AddConfiguration(config);
 
 #if DEBUG
-            builder.Logging.AddDebug();
+            //builder.Logging.AddDebug();
 #endif
             var app = builder.Build();
 

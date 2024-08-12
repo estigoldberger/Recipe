@@ -12,12 +12,12 @@
     </ContentPage.Resources>
     <Grid ColumnDefinitions="Auto,Auto,Auto" RowDefinitions="Auto,*" HorizontalOptions="Center" RowSpacing="10" ColumnSpacing="10">
         <Button x:Name="RecipeListBtn" Text="Click here to see a list of recipes" Grid.Column="0" Grid.Row="0" Clicked="RecipeListBtn_Clicked" />
-        <ListView x:Name="ListView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+        <ListView x:Name="ListView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" ItemTapped="ListView_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="Auto, Auto, Auto"  >
-                            <Label Text="{Binding Path=[RecipeName]}" Grid.Column="1"  />
+                            <Label Text="{Binding RecipeName}" Grid.Column="1"  />
                             
                         </Grid>
                     </ViewCell>

@@ -2,10 +2,12 @@
 {
     public class bizRecipe : bizObject<bizRecipe>
     {
+
         public bizRecipe()
         {
 
         }
+
         private int _recipeId;
         private int _staffId;
         private int _cuisineId;
@@ -14,6 +16,11 @@
         private DateTime _datedrafted;
         private DateTime? _datepublished;
         private DateTime? _datearchived;
+        private string _recipestatus = "";
+        private List<bizStaff> lstStaff;
+
+
+
         public List<bizRecipe> GetRecipeList()
         {
 
@@ -28,6 +35,18 @@
             SQLUtility.SetParameterValue(cmd, "RecipeName", recipenameval);
             DataTable dt = SQLUtility.GetDataTable(cmd);
             return this.GetListFromDataTable(dt);
+        }
+        public List<bizStaff> StaffList
+        {
+            get
+            {
+                if (lstStaff == null)
+                {
+                    lstStaff = new bizStaff().GetList();
+                }
+                return lstStaff;
+
+            }
         }
 
         public int RecipeId
@@ -134,7 +153,20 @@
             }
         }
 
+        public string Status
+        {
+            get { return _recipestatus; }
+            set
+            {
+                if (_recipestatus != value)
+                {
+                    _recipestatus = value;
+                    InvokePropertyChanged();
+                }
+            }
 
-
+        }
     }
+
 }
+
